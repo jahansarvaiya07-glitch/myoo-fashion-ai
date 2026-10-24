@@ -1,0 +1,5917 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3a101a">
+  <title>MYOO | From Karigar to Closet</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --maroon: #3a101a;
+      --black: #111111;
+      --white: #ffffff;
+      --cream: #f4efea;
+      --gold: #c69c6d;
+      --line: #c9bdb3;
+      --muted: #675b55;
+      --nav-height: 88px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      border-radius: 0 !important;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 20px);
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--black);
+      font-family: "Lato", sans-serif;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button,
+    a,
+    select {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button,
+    select {
+      cursor: pointer;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 900;
+      line-height: 1.6;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      min-height: 52px;
+      padding: 16px 23px;
+      border: 1px solid var(--black);
+      background: var(--black);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .button:hover {
+      background: var(--maroon);
+      border-color: var(--maroon);
+    }
+
+    .button.light {
+      background: var(--cream);
+      border-color: var(--cream);
+      color: var(--maroon);
+    }
+
+    .button.light:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: -100px;
+      z-index: 100;
+      padding: 16px;
+      color: var(--white);
+      background: var(--black);
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      background: var(--cream);
+      border-bottom: 1px solid var(--black);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .wordmark {
+      font-family: "Playfair Display", serif;
+      font-size: 39px;
+      font-weight: 700;
+      letter-spacing: -.07em;
+    }
+
+    .brand-tagline {
+      max-width: 120px;
+      padding-left: 20px;
+      border-left: 1px solid var(--black);
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.6;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .navigation {
+      display: flex;
+      gap: 35px;
+    }
+
+    .navigation a {
+      padding: 8px 0;
+      border-bottom: 2px solid var(--cream);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .navigation a:hover {
+      border-bottom-color: var(--maroon);
+    }
+
+    .hero {
+      min-height: 100svh;
+      padding-top: var(--nav-height);
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      background: var(--maroon);
+      color: var(--cream);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 80px 8% 100px 10%;
+    }
+
+    .hero-copy>.eyebrow {
+      color: var(--gold);
+    }
+
+    .hero h1 {
+      margin: 27px 0;
+      font-size: clamp(62px, 6.8vw, 112px);
+      line-height: .99;
+      letter-spacing: -.06em;
+    }
+
+    .hero h1 em {
+      font-weight: 400;
+      color: var(--gold);
+    }
+
+    .hero-description {
+      max-width: 360px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .hero .button {
+      margin-top: 34px;
+    }
+
+    .hero-note {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid var(--gold);
+      font-size: 10px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 640px;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .hero-visual>img {
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      filter: contrast(1.12) saturate(.65);
+    }
+
+    .hero-image-caption {
+      position: absolute;
+      right: 0;
+      bottom: 38px;
+      max-width: 270px;
+      padding: 20px 28px;
+      background: var(--cream);
+      color: var(--black);
+      border: 1px solid var(--black);
+    }
+
+    .hero-image-caption p {
+      margin-top: 6px;
+      font-family: "Playfair Display", serif;
+      font-size: 23px;
+    }
+
+    .manifesto {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      padding: 29px 5%;
+      background: var(--black);
+      color: var(--cream);
+      border-bottom: 1px solid var(--black);
+    }
+
+    .manifesto p {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(21px, 2.2vw, 32px);
+    }
+
+    .manifesto .eyebrow {
+      color: var(--gold);
+      text-align: right;
+    }
+
+    .collection {
+      padding: 80px 5%;
+    }
+
+    .collection-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .collection-heading h2 {
+      max-width: 760px;
+      margin-top: 12px;
+      font-size: clamp(40px, 5vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+    }
+
+    .collection-heading>p {
+      max-width: 230px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .filters {
+      border-top: 2px solid var(--black);
+      border-bottom: 1px solid var(--black);
+      margin-bottom: 20px;
+    }
+
+    .gender-filters {
+      display: flex;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .filter-button {
+      border: 0;
+      background: var(--cream);
+      min-height: 57px;
+      padding: 18px 31px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .filter-button[aria-pressed="true"],
+    .filter-button:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .filter-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      padding: 15px 0;
+    }
+
+    .style-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .style-filters .filter-button {
+      border: 1px solid var(--black);
+      min-height: 39px;
+      padding: 10px 17px;
+    }
+
+    .price-filter {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    select {
+      max-width: 100%;
+      min-height: 42px;
+      padding: 10px 38px 10px 13px;
+      background: var(--cream);
+      border: 1px solid var(--black);
+      color: var(--black);
+    }
+
+    .collection-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 20px 0;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 35px 20px;
+    }
+
+    .product-card {
+      min-width: 0;
+    }
+
+    .product-open {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: none;
+      text-align: left;
+    }
+
+    .product-media {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      background: var(--maroon);
+      border: 1px solid var(--black);
+    }
+
+    .product-media img {
+      height: 100%;
+    }
+
+    .product-open:hover .product-media img {
+      transform: scale(1.035);
+    }
+
+    .product-label {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 8px 10px;
+      background: var(--cream);
+      color: var(--black);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .product-action {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: none;
+      padding: 17px;
+      background: var(--black);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .product-open:hover .product-action,
+    .product-open:focus-visible .product-action {
+      display: block;
+    }
+
+    .product-info {
+      padding: 17px 0 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .product-category {
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .product-info h3 {
+      margin: 8px 0 11px;
+      font-size: 21px;
+      line-height: 1.25;
+    }
+
+    .product-price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .product-price small {
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .empty-state {
+      padding: 65px 20px;
+      text-align: center;
+      border: 1px solid;
+    }
+
+    .empty-state h3 {
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+
+    .empty-state .button {
+      margin-top: 24px;
+    }
+
+    .pagination {
+      min-height: 110px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding-top: 35px;
+    }
+
+    .pagination p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .craft-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--black);
+      background: var(--maroon);
+      color: var(--cream);
+    }
+
+    .craft-intro {
+      padding: 70px 10%;
+      border-right: 1px solid var(--gold);
+    }
+
+    .craft-intro .eyebrow {
+      color: var(--gold);
+    }
+
+    .craft-intro h2 {
+      margin: 20px 0;
+      font-size: clamp(40px, 4vw, 62px);
+      line-height: 1.1;
+    }
+
+    .craft-intro p {
+      line-height: 1.8;
+      max-width: 430px;
+      font-size: 14px;
+    }
+
+    .craft-steps {
+      padding: 35px 10%;
+    }
+
+    .craft-step {
+      display: grid;
+      grid-template-columns: 35px 1fr;
+      gap: 20px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .craft-step:last-child {
+      border-bottom: 0;
+    }
+
+    .craft-step>span {
+      color: var(--gold);
+      font-size: 12px;
+    }
+
+    .craft-step h3 {
+      font-size: 25px;
+      margin-bottom: 9px;
+    }
+
+    .craft-step p {
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .site-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 30px 5%;
+      background: var(--cream);
+    }
+
+    .site-footer p {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* The dialog and its backdrop are fully opaque. */
+    .product-dialog {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      height: 100dvh;
+      max-height: none;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: var(--cream);
+      color: var(--black);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .product-dialog::backdrop {
+      background: var(--black);
+    }
+
+    .product-dialog[open] {
+      animation: slide-up 260ms ease-out;
+    }
+
+    @keyframes slide-up {
+      from {
+        transform: translateY(100%);
+      }
+
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .dialog-header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      background: var(--cream);
+      border-bottom: 1px solid var(--black);
+    }
+
+    .dialog-header .wordmark {
+      font-size: 30px;
+    }
+
+    .close-button {
+      min-height: 42px;
+      padding: 10px 16px;
+      border: 1px solid var(--black);
+      background: var(--cream);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .1em;
+    }
+
+    .close-button:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .dialog-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .dialog-visual {
+      position: sticky;
+      top: 72px;
+      height: calc(100dvh - 72px);
+      min-height: 500px;
+      background: var(--maroon);
+      border-right: 1px solid var(--black);
+      overflow: hidden;
+    }
+
+    .dialog-visual>img {
+      height: 100%;
+    }
+
+    .dialog-visual>img.synthesized {
+      filter: sepia(.65) saturate(1.7) hue-rotate(305deg) contrast(1.12);
+    }
+
+    .image-status {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      padding: 17px 20px;
+      border: 1px solid var(--black);
+      background: var(--cream);
+    }
+
+    .image-status p {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .dialog-details {
+      padding: 42px clamp(22px, 4vw, 65px) 70px;
+    }
+
+    .dialog-details h2 {
+      margin: 15px 0;
+      font-size: clamp(36px, 4vw, 57px);
+      line-height: 1.1;
+    }
+
+    .product-description {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .base-price {
+      margin: 24px 0;
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .base-price small {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    fieldset {
+      margin: 28px 0;
+      padding: 0;
+      border: 0;
+      min-width: 0;
+    }
+
+    legend {
+      margin-bottom: 13px;
+    }
+
+    .fabric-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .fabric-option {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .fabric-option input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      clip-path: inset(50%);
+      overflow: hidden;
+    }
+
+    .fabric-option span {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      min-height: 71px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      background: var(--cream);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .fabric-option small {
+      font-size: 10px;
+      font-weight: 400;
+    }
+
+    .fabric-option input:checked+span {
+      background: var(--maroon);
+      color: var(--white);
+      border-color: var(--maroon);
+    }
+
+    .fabric-option input:focus-visible+span {
+      outline: 3px solid var(--gold);
+    }
+
+    .fabric-option input:disabled+span {
+      cursor: not-allowed;
+    }
+
+    .ai-engine {
+      margin-top: 30px;
+      border-top: 2px solid var(--black);
+      padding-top: 24px;
+    }
+
+    .engine-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .engine-heading h3 {
+      font-size: 28px;
+    }
+
+    .simulation-tag {
+      padding: 7px;
+      background: var(--black);
+      color: var(--white);
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      white-space: nowrap;
+    }
+
+    .engine-description {
+      margin: 12px 0 20px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .upload-zone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      min-height: 165px;
+      padding: 23px;
+      border: 2px dashed var(--black);
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .upload-zone:hover,
+    .upload-zone.dragging {
+      background: var(--maroon);
+      color: var(--white);
+      border-color: var(--gold);
+    }
+
+    .upload-zone strong {
+      font-size: 12px;
+    }
+
+    .upload-zone small {
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .upload-symbol {
+      font-size: 27px;
+      line-height: 1;
+    }
+
+    .upload-help {
+      margin-top: 9px;
+      font-size: 10px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .upload-error {
+      margin-top: 12px;
+      color: var(--maroon);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .reference-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .reference-item {
+      position: relative;
+      aspect-ratio: 1;
+      border: 1px solid var(--black);
+    }
+
+    .reference-item img {
+      height: 100%;
+    }
+
+    .remove-reference {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 28px;
+      height: 28px;
+      border: 0;
+      background: var(--black);
+      color: var(--white);
+      font-size: 18px;
+    }
+
+    .synthesize-button {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .synthesize-button:disabled {
+      background: #594a4e;
+      border-color: #594a4e;
+    }
+
+    .terminal {
+      margin-top: 14px;
+      padding: 18px;
+      background: var(--black);
+      color: var(--cream);
+      border-left: 4px solid var(--gold);
+      font-family: monospace;
+      font-size: 11px;
+      line-height: 1.9;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .price-breakdown {
+      margin-top: 24px;
+      padding-top: 21px;
+      border-top: 1px solid var(--black);
+    }
+
+    .price-breakdown h3 {
+      margin-bottom: 18px;
+      font-size: 25px;
+    }
+
+    .price-breakdown dl {
+      margin: 0;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 13px;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .price-row dd {
+      margin: 0;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .price-row.total {
+      padding-top: 17px;
+      border-top: 2px solid var(--black);
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .price-note {
+      font-size: 11px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .header-cart {
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid var(--black);
+      background: var(--cream);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .header-cart:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .add-cart-button {
+      width: 100%;
+      margin: 12px 0 5px;
+    }
+
+    .flow-dialog {
+      position: fixed;
+      inset: 0;
+      width: min(760px, 92vw);
+      max-width: none;
+      max-height: 90dvh;
+      margin: auto;
+      padding: 0;
+      border: 1px solid var(--black);
+      background: var(--cream);
+      color: var(--black);
+      overflow-y: auto;
+    }
+
+    .flow-dialog::backdrop {
+      background: rgb(17 17 17 / 78%);
+    }
+
+    .flow-header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 17px 24px;
+      background: var(--cream);
+      border-bottom: 1px solid var(--black);
+    }
+
+    .flow-header h2 {
+      font-size: 27px;
+    }
+
+    .flow-content {
+      padding: 24px;
+    }
+
+    .cart-line {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      align-items: center;
+      gap: 15px;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-line h3 {
+      font-size: 18px;
+    }
+
+    .cart-line p,
+    .cart-empty,
+    .checkout-note {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .cart-line-price {
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .remove-cart-item,
+    .close-button {
+      cursor: pointer;
+    }
+
+    .checkout-section {
+      margin-top: 25px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .checkout-section h3 {
+      margin-bottom: 15px;
+      font-size: 23px;
+    }
+
+    .checkout-fields,
+    .payment-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .checkout-fields label {
+      display: grid;
+      gap: 7px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .checkout-fields .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .checkout-fields input,
+    .checkout-fields textarea {
+      width: 100%;
+      min-height: 44px;
+      padding: 11px;
+      border: 1px solid var(--black);
+      background: var(--white);
+      color: var(--black);
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .checkout-fields textarea {
+      min-height: 88px;
+      resize: vertical;
+    }
+
+    .payment-options {
+      gap: 9px;
+    }
+
+    .payment-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .payment-option:has(input:checked) {
+      border-color: var(--maroon);
+      background: #eadfda;
+    }
+
+    .payment-option input {
+      accent-color: var(--maroon);
+    }
+
+    .flow-total {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 2px solid var(--black);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .flow-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .pay-button {
+      min-width: 190px;
+    }
+
+    #payment-success {
+      min-height: 75svh;
+      display: grid;
+      place-items: center;
+      padding: 100px 6%;
+      text-align: center;
+      background: var(--maroon);
+      color: var(--cream);
+    }
+
+    #payment-success[hidden] {
+      display: none;
+    }
+
+    .success-content {
+      max-width: 620px;
+    }
+
+    .success-content h1 {
+      margin: 18px 0;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.05;
+    }
+
+    .success-content p {
+      margin: 0 auto 24px;
+      max-width: 430px;
+      color: #eadfda;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 760px) {
+      .header-cart {
+        min-height: 38px;
+        padding: 8px;
+        font-size: 8px;
+      }
+
+      .checkout-fields,
+      .payment-options {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-line {
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+
+      .cart-line-price {
+        grid-column: 1;
+      }
+
+      .remove-cart-item {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+      }
+
+      .flow-content {
+        padding: 18px;
+      }
+
+      .flow-actions {
+        flex-direction: column-reverse;
+      }
+
+      .flow-actions .button {
+        width: 100%;
+      }
+    }
+
+    @media (min-width: 1600px) {
+      .product-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 1050px) {
+      .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .hero-copy {
+        padding-left: 9%;
+        padding-right: 6%;
+      }
+
+      .hero-visual {
+        min-height: 580px;
+      }
+
+      .dialog-layout {
+        grid-template-columns: .9fr 1.1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --nav-height: 74px;
+      }
+
+      .site-header {
+        padding: 0 5%;
+      }
+
+      .wordmark {
+        font-size: 33px;
+      }
+
+      .brand {
+        gap: 11px;
+      }
+
+      .brand-tagline {
+        padding-left: 11px;
+        font-size: 8px;
+        max-width: 100px;
+      }
+
+      .navigation {
+        gap: 19px;
+      }
+
+      .navigation a {
+        font-size: 9px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding: 65px 7% 45px;
+      }
+
+      .hero h1 {
+        font-size: clamp(62px, 13vw, 90px);
+      }
+
+      .hero-note {
+        margin-top: 30px;
+      }
+
+      .hero-visual {
+        min-height: 460px;
+      }
+
+      .manifesto {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 28px 5%;
+        gap: 13px;
+      }
+
+      .manifesto .eyebrow {
+        text-align: left;
+      }
+
+      .collection {
+        padding: 55px 5%;
+      }
+
+      .collection-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .collection-heading>p {
+        max-width: 340px;
+      }
+
+      .filter-bottom {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .price-filter {
+        justify-content: space-between;
+      }
+
+      .price-filter select {
+        flex: 1;
+        max-width: 260px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 12px;
+      }
+
+      .product-info h3 {
+        font-size: 18px;
+      }
+
+      .product-price {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .product-action {
+        display: block;
+        padding: 12px;
+        font-size: 8px;
+      }
+
+      .product-label {
+        top: 8px;
+        left: 8px;
+        font-size: 8px;
+        padding: 6px;
+      }
+
+      .craft-section {
+        grid-template-columns: 1fr;
+      }
+
+      .craft-intro {
+        border-right: 0;
+        border-bottom: 1px solid var(--gold);
+        padding: 45px 7%;
+      }
+
+      .craft-steps {
+        padding: 15px 7%;
+      }
+
+      .site-footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .dialog-layout {
+        display: block;
+      }
+
+      .dialog-header {
+        padding: 0 20px;
+        height: 65px;
+      }
+
+      .dialog-header>.eyebrow {
+        display: none;
+      }
+
+      .dialog-visual {
+        position: relative;
+        top: auto;
+        height: 65svh;
+        min-height: 360px;
+        border-right: 0;
+        border-bottom: 1px solid;
+      }
+
+      .dialog-details {
+        padding: 30px 6% 50px;
+      }
+
+      .collection-meta {
+        line-height: 1.6;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .product-dialog[open] {
+        animation: none;
+      }
+
+      .product-open:hover .product-media img {
+        transform: none;
+      }
+    }
+
+    /* MYOO studio: server-backed image generation with local design controls */
+    .hero-float {
+      position: absolute;
+      z-index: 2;
+      padding: 10px 12px;
+      background: var(--cream);
+      color: var(--black);
+      border: 1px solid var(--black);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .hero-float-top {
+      top: 13%;
+      left: 0;
+    }
+
+    .hero-float-bottom {
+      right: 0;
+      bottom: 18%;
+      background: var(--gold);
+    }
+
+    .cut-line {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 5%;
+      background: var(--cream);
+      border-top: 1px dashed var(--black);
+      border-bottom: 1px dashed var(--black);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .cut-line::before,
+    .cut-line::after {
+      content: "✂";
+      color: var(--maroon);
+      font-size: 18px;
+    }
+
+    .cut-line::after {
+      margin-left: auto;
+    }
+
+    .studio-section,
+    .tryon-section,
+    .makers-section,
+    .vault-section {
+      padding: 92px 5%;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .section-topline {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 38px;
+    }
+
+    .section-topline h2 {
+      max-width: 800px;
+      margin-top: 12px;
+      font-size: clamp(42px, 5.5vw, 82px);
+      line-height: .97;
+      letter-spacing: -.06em;
+    }
+
+    .section-topline>p {
+      max-width: 280px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .studio-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(400px, .95fr);
+      border: 1px solid var(--black);
+    }
+
+    .studio-preview {
+      position: sticky;
+      top: calc(var(--nav-height) + 20px);
+      align-self: start;
+      min-height: 710px;
+      overflow: hidden;
+      background: var(--maroon);
+      border-right: 1px solid var(--black);
+    }
+
+    .studio-preview img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      filter: saturate(.82) contrast(1.08);
+      transition: filter .35s, transform .65s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .studio-preview.is-generated img {
+      filter: sepia(.25) saturate(1.2) contrast(1.12);
+      transform: scale(1.035);
+    }
+
+    .preview-grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .4;
+      background-image: linear-gradient(#c69c6d 1px, transparent 1px), linear-gradient(90deg, #c69c6d 1px, transparent 1px);
+      background-size: 36px 36px;
+      mix-blend-mode: overlay;
+    }
+
+    .preview-stamp {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      padding: 12px 14px;
+      border: 1px solid var(--cream);
+      color: var(--cream);
+      background: var(--black);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .preview-details {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 18px 20px;
+      background: var(--cream);
+      border: 1px solid var(--black);
+    }
+
+    .preview-details strong {
+      display: block;
+      margin-top: 7px;
+      font-family: "Playfair Display", serif;
+      font-weight: 500;
+      font-size: 27px;
+      line-height: 1.1;
+    }
+
+    .preview-details p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .studio-engine {
+      padding: clamp(26px, 4vw, 56px);
+      background: var(--cream);
+    }
+
+    .studio-engine h3 {
+      font-size: 30px;
+    }
+
+    .prompt-label {
+      display: block;
+      margin: 26px 0 10px;
+    }
+
+    .idea-input {
+      display: block;
+      width: 100%;
+      min-height: 148px;
+      resize: vertical;
+      padding: 16px;
+      border: 2px solid var(--black);
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    .idea-input:focus {
+      outline: 0;
+      border-color: var(--maroon);
+      box-shadow: inset 0 0 0 1px var(--maroon);
+    }
+
+    .prompt-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .prompt-chip,
+    .mini-button,
+    .option-button {
+      padding: 10px 12px;
+      border: 1px solid var(--black);
+      background: var(--cream);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .prompt-chip:hover,
+    .mini-button:hover,
+    .option-button:hover,
+    .option-button[aria-pressed="true"] {
+      background: var(--black);
+      color: var(--cream);
+    }
+
+    .prompt-tools {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .studio-upload {
+      margin-top: 25px;
+    }
+
+    .reference-drop {
+      display: grid;
+      place-items: center;
+      min-height: 112px;
+      padding: 18px;
+      border: 2px dashed var(--black);
+      background: #eee5de;
+      text-align: center;
+    }
+
+    .reference-drop:hover,
+    .reference-drop.dragging {
+      background: var(--maroon);
+      color: var(--cream);
+      border-color: var(--gold);
+    }
+
+    .reference-drop strong {
+      display: block;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .reference-drop small {
+      display: block;
+      margin-top: 6px;
+      font-size: 10px;
+    }
+
+    .studio-ref-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .studio-ref-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      border: 1px solid var(--black);
+    }
+
+    .generate-button {
+      width: 100%;
+      margin-top: 26px;
+    }
+
+    .generate-button:disabled {
+      opacity: .72;
+    }
+
+    .studio-log {
+      min-height: 63px;
+      margin-top: 14px;
+      padding: 14px;
+      border-left: 4px solid var(--gold);
+      background: var(--black);
+      color: var(--cream);
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      line-height: 1.65;
+      white-space: pre-line;
+    }
+
+    .customizer {
+      margin-top: 32px;
+      padding-top: 26px;
+      border-top: 2px solid var(--black);
+    }
+
+    .customizer[hidden] {
+      display: none;
+    }
+
+    .customizer h3 {
+      margin-bottom: 18px;
+    }
+
+    .customizer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 12px;
+    }
+
+    .control-group>span {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .control-group select {
+      width: 100%;
+    }
+
+    .addons {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .addon {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .addon input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .addon span {
+      display: block;
+      padding: 10px 12px;
+      border: 1px solid var(--black);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .addon input:checked+span {
+      background: var(--maroon);
+      color: var(--cream);
+    }
+
+    .studio-total {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 25px;
+      padding: 20px;
+      background: var(--maroon);
+      color: var(--cream);
+      border: 1px solid var(--gold);
+    }
+
+    .studio-total strong {
+      display: block;
+      margin-top: 6px;
+      font-family: "Playfair Display", serif;
+      font-size: 42px;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .studio-total small {
+      display: block;
+      max-width: 270px;
+      color: #f1d5b7;
+      font-size: 10px;
+      line-height: 1.55;
+      text-align: right;
+    }
+
+    .journey-next {
+      width: 100%;
+      margin-top: 13px;
+    }
+
+    /* MYOO AI Fashion Designer Styles */
+    .designer-selected-file {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 10px;
+      padding: 12px 16px;
+      background: #eee5de;
+      border: 1px solid var(--black);
+    }
+
+    .selected-file-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      overflow: hidden;
+    }
+
+    .selected-file-info .file-name {
+      font-weight: 700;
+      color: var(--black);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 220px;
+    }
+
+    .selected-file-info .file-size {
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .designer-view-toggle {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      gap: 4px;
+      z-index: 5;
+    }
+
+    .designer-view-toggle .mini-button.is-active {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+
+    .designer-heading-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 32px;
+      margin-bottom: 16px;
+      padding-top: 24px;
+      border-top: 2px solid var(--black);
+    }
+
+    .designer-specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .spec-card {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      background: var(--cream);
+    }
+
+    .spec-card.spec-full {
+      grid-column: 1 / -1;
+    }
+
+    .spec-label {
+      display: block;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .spec-val {
+      display: block;
+      font-size: 14px;
+      color: var(--black);
+    }
+
+    .spec-desc {
+      margin: 4px 0 0;
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--black);
+    }
+
+    .spec-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .spec-tag {
+      padding: 4px 8px;
+      border: 1px solid var(--black);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      background: #eee5de;
+    }
+
+    .designer-enhancement-box {
+      margin: 18px 0;
+      padding: 16px 20px;
+      background: #eee5de;
+      border-left: 4px solid var(--gold);
+    }
+
+    .designer-enhancement-box .enhancement-text {
+      margin: 8px 0 0;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--black);
+      font-style: italic;
+    }
+
+    .designer-recommendations-box {
+      margin: 20px 0;
+    }
+
+    .designer-recommendations-box .prompt-chips {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .designer-recommendations-box .prompt-chip {
+      text-align: left;
+      cursor: pointer;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+    }
+
+    .designer-recommendations-box .prompt-chip::before {
+      content: "✦ ";
+      color: var(--gold);
+      font-size: 12px;
+    }
+
+    .designer-generation-step {
+      margin-top: 26px;
+      padding-top: 24px;
+      border-top: 2px solid var(--black);
+    }
+
+    .designer-error-banner {
+      margin-top: 14px;
+      padding: 16px;
+      background: #3a101a;
+      color: var(--cream);
+      border: 1px solid var(--gold);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .designer-error-banner strong {
+      display: block;
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .designer-error-banner p {
+      margin: 0 0 6px;
+    }
+
+    .designer-error-banner small {
+      display: block;
+      color: #f1d5b7;
+      font-size: 11px;
+    }
+
+    .designer-preview.is-loading img {
+      filter: blur(4px) saturate(0.8);
+      opacity: 0.7;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    .tryon-section {
+      background: var(--black);
+      color: var(--cream);
+    }
+
+    .tryon-section .section-topline>p {
+      color: #c9bdb3;
+    }
+
+    .tryon-section .eyebrow {
+      color: var(--gold);
+    }
+
+    .tryon-grid {
+      display: grid;
+      grid-template-columns: .72fr .72fr 1.18fr;
+      border: 1px solid var(--gold);
+    }
+
+    .tryon-upload,
+    .tryon-result {
+      min-height: 500px;
+      padding: 22px;
+      border-right: 1px solid var(--gold);
+    }
+
+    .tryon-result {
+      border-right: 0;
+      background: var(--cream);
+      color: var(--black);
+    }
+
+    .tryon-upload h3,
+    .tryon-result h3 {
+      font-size: 25px;
+    }
+
+    .tryon-upload p,
+    .tryon-result p {
+      margin-top: 8px;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .tryon-drop {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 348px;
+      margin-top: 18px;
+      overflow: hidden;
+      border: 2px dashed var(--gold);
+      color: var(--gold);
+      text-align: center;
+    }
+
+    .tryon-drop:hover,
+    .tryon-drop.dragging {
+      background: var(--maroon);
+    }
+
+    .tryon-drop img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      opacity: .85;
+    }
+
+    .tryon-drop span {
+      position: relative;
+      z-index: 1;
+      max-width: 180px;
+      padding: 10px;
+      background: var(--black);
+      color: var(--cream);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .tryon-drop img+span {
+      display: none;
+    }
+
+    .tryon-process {
+      width: 100%;
+      margin-top: 18px;
+      border-color: var(--gold);
+    }
+
+    .tryon-process:disabled {
+      opacity: .5;
+    }
+
+    .tryon-stage {
+      min-height: 42px;
+      margin-top: 12px;
+      color: var(--gold);
+      font-family: ui-monospace, monospace;
+      font-size: 10px;
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+
+    .comparison {
+      position: relative;
+      height: 350px;
+      margin-top: 18px;
+      overflow: hidden;
+      background: var(--maroon);
+      border: 1px solid var(--black);
+    }
+
+    .comparison>img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      object-position: center;
+    }
+
+    .comparison-after {
+      width: 50%;
+      overflow: hidden;
+      background: var(--maroon) center / cover no-repeat;
+      border-right: 2px solid var(--gold);
+    }
+
+    .comparison-after img {
+      width: 200%;
+      height: 100%;
+      max-width: none;
+      opacity: .76;
+      mix-blend-mode: screen;
+      filter: sepia(.4) saturate(1.35) contrast(1.08);
+    }
+
+    .comparison::after {
+      content: "AFTER / SYNTHESIS PREVIEW";
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      padding: 7px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .1em;
+    }
+
+    .compare-slider {
+      width: 100%;
+      margin-top: 17px;
+      accent-color: var(--maroon);
+    }
+
+    .result-empty {
+      display: grid;
+      place-items: center;
+      height: 350px;
+      margin-top: 18px;
+      padding: 30px;
+      background: #e6ddd6;
+      border: 1px solid var(--black);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .quality-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .quality-controls label {
+      cursor: pointer;
+    }
+
+    .quality-controls input {
+      margin-right: 5px;
+      accent-color: var(--maroon);
+    }
+
+    .download-button {
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    .makers-section {
+      background: var(--cream);
+    }
+
+    .makers-layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      border: 1px solid var(--black);
+    }
+
+    .fit-panel {
+      padding: clamp(25px, 4vw, 55px);
+      background: var(--maroon);
+      color: var(--cream);
+      border-right: 1px solid var(--black);
+    }
+
+    .fit-panel .eyebrow {
+      color: var(--gold);
+    }
+
+    .fit-panel h3 {
+      margin: 12px 0 20px;
+      font-size: 38px;
+    }
+
+    .fit-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .fit-tab {
+      flex: 1;
+      min-height: 48px;
+      border: 0;
+      border-right: 1px solid var(--gold);
+      background: transparent;
+      color: var(--cream);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .fit-tab:last-child {
+      border-right: 0;
+    }
+
+    .fit-tab[aria-selected="true"] {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .fit-view {
+      padding-top: 22px;
+      min-height: 277px;
+    }
+
+    .fit-view p {
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .size-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 17px;
+    }
+
+    .size-button {
+      width: 43px;
+      height: 40px;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--cream);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .size-button[aria-pressed="true"],
+    .size-button:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .measure-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .measure-grid label {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .measure-grid input {
+      width: 100%;
+      margin-top: 6px;
+      padding: 10px;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--cream);
+    }
+
+    .measure-grid input::placeholder {
+      color: #d7bc9f;
+    }
+
+    .ar-video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      margin-bottom: 12px;
+      background: var(--black);
+      border: 1px solid var(--gold);
+      object-fit: cover;
+    }
+
+    .ar-readout {
+      margin-top: 12px;
+      color: var(--gold);
+      font-family: ui-monospace, monospace;
+      font-size: 10px;
+      white-space: pre-line;
+    }
+
+    .maker-panel {
+      padding: clamp(25px, 4vw, 55px);
+    }
+
+    .maker-panel h3 {
+      font-size: 35px;
+    }
+
+    .maker-panel>p {
+      max-width: 510px;
+      margin: 10px 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .match-button {
+      margin-bottom: 16px;
+    }
+
+    .makers-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .maker-card {
+      display: grid;
+      grid-template-columns: 55px 1fr auto;
+      align-items: center;
+      gap: 14px;
+      padding: 15px;
+      border: 1px solid var(--black);
+      background: var(--cream);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .maker-card:hover,
+    .maker-card[aria-pressed="true"] {
+      background: var(--black);
+      color: var(--cream);
+    }
+
+    .maker-mark {
+      display: grid;
+      place-items: center;
+      width: 55px;
+      height: 55px;
+      background: var(--maroon);
+      color: var(--gold);
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+    }
+
+    .maker-card h4 {
+      font-family: "Playfair Display", serif;
+      font-size: 19px;
+      font-weight: 500;
+    }
+
+    .maker-card p {
+      margin-top: 4px;
+      color: inherit;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .maker-meta {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .maker-status {
+      margin-top: 16px;
+      padding: 13px;
+      background: var(--black);
+      color: var(--cream);
+      font-family: ui-monospace, monospace;
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .vault-section {
+      background: var(--gold);
+    }
+
+    .vault-section .section-topline>p {
+      color: var(--black);
+    }
+
+    .vault-head-action {
+      display: flex;
+      align-items: end;
+      gap: 18px;
+    }
+
+    .vault-save {
+      white-space: nowrap;
+    }
+
+    .vault-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .vault-card {
+      position: relative;
+      min-height: 320px;
+      overflow: hidden;
+      background: var(--maroon);
+      border: 1px solid var(--black);
+      color: var(--cream);
+    }
+
+    .vault-card img {
+      height: 100%;
+      opacity: .8;
+      transition: transform .5s;
+    }
+
+    .vault-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .vault-card>div {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 15px;
+      background: var(--black);
+    }
+
+    .vault-card h3 {
+      font-size: 20px;
+    }
+
+    .vault-card p {
+      margin-top: 5px;
+      color: var(--gold);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .vault-empty {
+      grid-column: 1 / -1;
+      min-height: 220px;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      border: 1px dashed var(--black);
+      text-align: center;
+    }
+
+    .vault-empty h3 {
+      font-size: 30px;
+    }
+
+    .vault-empty p {
+      max-width: 440px;
+      margin-top: 8px;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    /* Luxury closing footer inspired by the reference brand architecture. */
+    .site-footer.site-footer-luxury {
+      display: block;
+      padding: 0;
+      background: #050505;
+      color: var(--cream);
+      border-top: 1px solid #464646;
+    }
+
+    .footer-newsletter {
+      display: grid;
+      grid-template-columns: 1fr minmax(320px, 480px);
+      gap: 30px;
+      align-items: end;
+      padding: 42px 5% 38px;
+      border-bottom: 1px solid #383838;
+    }
+
+    .footer-newsletter h2 {
+      margin-top: 9px;
+      color: var(--cream);
+      font-size: clamp(31px, 4vw, 56px);
+      line-height: 1;
+    }
+
+    .footer-newsletter p {
+      max-width: 440px;
+      margin-top: 14px;
+      color: #999;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .newsletter-form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      border-bottom: 1px solid #777;
+    }
+
+    .newsletter-form input {
+      min-width: 0;
+      padding: 15px 0;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--cream);
+      font-size: 12px;
+    }
+
+    .newsletter-form input::placeholder {
+      color: #888;
+    }
+
+    .newsletter-form button {
+      padding: 15px 0 15px 16px;
+      border: 0;
+      background: transparent;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .newsletter-form button:hover {
+      color: var(--cream);
+    }
+
+    .newsletter-status {
+      grid-column: 1 / -1;
+      min-height: 18px;
+      margin: 8px 0 0;
+      color: var(--gold);
+      font-size: 10px;
+    }
+
+    .footer-columns {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(130px, 1fr)) minmax(170px, 1.25fr);
+      gap: 30px;
+      padding: 48px 5% 72px;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 22px;
+      color: var(--cream);
+      font-family: "Lato", sans-serif;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .footer-column ul {
+      display: grid;
+      gap: 13px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .footer-column li,
+    .footer-column a {
+      color: #969696;
+      font-size: 12px;
+      line-height: 1.25;
+    }
+
+    .footer-column a:hover {
+      color: var(--cream);
+    }
+
+    .commitment-list {
+      gap: 19px !important;
+    }
+
+    .commitment {
+      display: grid;
+      grid-template-columns: 25px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .commitment-icon {
+      display: grid;
+      place-items: center;
+      width: 21px;
+      height: 21px;
+      color: var(--cream);
+      font-size: 15px;
+    }
+
+    .commitment strong {
+      display: block;
+      color: var(--cream);
+      font-size: 11px;
+      font-weight: 400;
+    }
+
+    .commitment small {
+      display: block;
+      margin-top: 5px;
+      color: #777;
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .footer-lower {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      padding: 0 5% 32px;
+      color: #969696;
+      font-size: 11px;
+    }
+
+    .footer-country,
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-country strong {
+      color: var(--cream);
+      font-weight: 700;
+    }
+
+    .footer-country a,
+    .footer-social a {
+      color: var(--cream);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .footer-country a:hover,
+    .footer-social a:hover {
+      color: var(--gold);
+    }
+
+    .footer-social {
+      justify-content: center;
+    }
+
+    .footer-social::before {
+      content: "+";
+      color: var(--gold);
+      font-size: 17px;
+    }
+
+    .footer-copy {
+      text-align: right;
+    }
+
+    .footer-brand-lockup {
+      padding: 0 4% 30px;
+      overflow: hidden;
+      color: var(--cream);
+      font-family: "Lato", sans-serif;
+      font-size: clamp(98px, 19.4vw, 310px);
+      font-weight: 900;
+      line-height: .72;
+      letter-spacing: -.1em;
+      text-align: center;
+    }
+
+    .footer-brand-lockup span {
+      display: inline-block;
+    }
+
+    .footer-brand-lockup .brand-cross {
+      display: inline-grid;
+      width: .34em;
+      height: .34em;
+      margin: 0 .06em;
+      place-items: center;
+      background: var(--maroon);
+      color: var(--gold);
+      font-size: .48em;
+      letter-spacing: 0;
+      vertical-align: .12em;
+    }
+
+    .footer-disclaimer {
+      padding: 0 5% 25px;
+      color: #666;
+      font-size: 10px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1050px) {
+      .navigation {
+        gap: 18px;
+      }
+
+      .studio-layout,
+      .makers-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .studio-preview {
+        position: relative;
+        top: 0;
+        min-height: 560px;
+        border-right: 0;
+        border-bottom: 1px solid var(--black);
+      }
+
+      .fit-panel {
+        border-right: 0;
+        border-bottom: 1px solid var(--black);
+      }
+
+      .tryon-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .tryon-result {
+        grid-column: 1 / -1;
+        border-top: 1px solid var(--gold);
+      }
+
+      .tryon-upload:nth-child(2) {
+        border-right: 0;
+      }
+
+      .vault-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .site-header {
+        padding: 0 20px;
+      }
+
+      .brand-tagline,
+      .navigation a:not([href="#studio"]) {
+        display: none;
+      }
+
+      .navigation {
+        gap: 0;
+      }
+
+      .section-topline {
+        display: block;
+      }
+
+      .section-topline>p {
+        margin-top: 18px;
+      }
+
+      .studio-section,
+      .tryon-section,
+      .makers-section,
+      .vault-section {
+        padding: 60px 20px;
+      }
+
+      .studio-preview {
+        min-height: 500px;
+      }
+
+      .customizer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .studio-total {
+        display: block;
+      }
+
+      .studio-total small {
+        margin-top: 12px;
+        text-align: left;
+      }
+
+      .tryon-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tryon-upload {
+        min-height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--gold);
+      }
+
+      .tryon-result {
+        grid-column: auto;
+      }
+
+      .tryon-drop {
+        min-height: 270px;
+      }
+
+      .comparison,
+      .result-empty {
+        height: 290px;
+      }
+
+      .vault-head-action {
+        display: block;
+      }
+
+      .vault-save {
+        margin-top: 18px;
+      }
+
+      .vault-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-float {
+        display: none;
+      }
+
+      .footer-newsletter {
+        display: block;
+        padding: 36px 20px 30px;
+      }
+
+      .newsletter-form {
+        margin-top: 24px;
+      }
+
+      .footer-columns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 36px 20px;
+        padding: 38px 20px 52px;
+      }
+
+      .footer-column:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .footer-lower {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 0 20px 30px;
+      }
+
+      .footer-social {
+        justify-content: flex-start;
+      }
+
+      .footer-copy {
+        text-align: left;
+      }
+
+      .footer-brand-lockup {
+        padding: 0 12px 23px;
+        font-size: 23vw;
+      }
+
+      .footer-disclaimer {
+        padding: 0 20px 22px;
+        text-align: left;
+      }
+    }
+
+
+    /* ===== Polish layer: motion + micro-interactions ===== */
+    :root {
+      --ease-out: cubic-bezier(.16, 1, .3, 1);
+      --ease-wipe: cubic-bezier(.7, 0, .2, 1);
+    }
+
+    @keyframes line-up {
+      from {
+        transform: translateY(105%);
+      }
+    }
+
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+    }
+
+    @keyframes curtain {
+      from {
+        clip-path: inset(0 0 100% 0);
+      }
+
+      to {
+        clip-path: inset(0);
+      }
+    }
+
+    @keyframes drift {
+      from {
+        transform: scale(1.14);
+      }
+    }
+
+    @keyframes dlg-in {
+      from {
+        transform: translateY(100%);
+      }
+    }
+
+    @keyframes dlg-out {
+      to {
+        transform: translateY(100%);
+      }
+    }
+
+    @keyframes pop {
+      from {
+        opacity: 0;
+        transform: scale(.6);
+      }
+    }
+
+    @keyframes scan {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: 0 100%;
+      }
+    }
+
+    @keyframes fill {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes develop {
+      from {
+        filter: grayscale(1) brightness(.5) contrast(1.3);
+      }
+    }
+
+    @keyframes progress {
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    /* Hero: one orchestrated entrance */
+    .hero h1 .line {
+      display: block;
+      overflow: hidden;
+      padding: 0 .1em .12em 0;
+      margin-bottom: -.12em;
+    }
+
+    .hero h1 .line>span {
+      display: block;
+      animation: line-up 1s var(--ease-out) both;
+    }
+
+    .hero h1 .line:nth-child(1)>span {
+      animation-delay: .25s;
+    }
+
+    .hero h1 .line:nth-child(2)>span {
+      animation-delay: .4s;
+    }
+
+    .hero-copy>.eyebrow {
+      animation: fade-up .8s var(--ease-out) .1s both;
+    }
+
+    .hero-description {
+      animation: fade-up .8s var(--ease-out) .75s both;
+    }
+
+    .hero .button {
+      animation: fade-up .8s var(--ease-out) .9s both;
+    }
+
+    .hero-note {
+      animation: fade-up .8s var(--ease-out) 1.05s both;
+    }
+
+    .hero-visual {
+      animation: curtain 1.3s var(--ease-wipe) .1s both;
+    }
+
+    .hero-visual>img {
+      animation: drift 2.8s var(--ease-out) .1s both;
+    }
+
+    .hero-image-caption {
+      animation: fade-up .9s var(--ease-out) 1.2s both;
+    }
+
+    /* Header: scroll progress + wiping nav underline */
+    .site-header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+    }
+
+    @supports (animation-timeline: scroll()) {
+      .site-header::after {
+        animation: progress linear both;
+        animation-timeline: scroll(root);
+      }
+    }
+
+    .navigation a {
+      border-bottom-color: transparent;
+      background: linear-gradient(var(--maroon), var(--maroon)) 0 100% / 0 2px no-repeat;
+      transition: background-size .3s var(--ease-wipe);
+    }
+
+    .navigation a:hover {
+      border-bottom-color: transparent;
+      background-size: 100% 2px;
+    }
+
+    /* Buttons: sharp colour wipe */
+    .button {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      transition: color .25s, border-color .25s;
+    }
+
+    .button::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: var(--maroon);
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      transition: transform .4s var(--ease-wipe);
+    }
+
+    .button.light::before {
+      background: var(--gold);
+    }
+
+    .button:hover {
+      background: var(--black);
+    }
+
+    .button.light:hover {
+      background: var(--cream);
+    }
+
+    .button:hover::before {
+      transform: scaleX(1);
+    }
+
+    .button:disabled::before {
+      display: none;
+    }
+
+    .button:disabled:hover {
+      background: #594a4e;
+      border-color: #594a4e;
+    }
+
+    .button>span[aria-hidden] {
+      transition: transform .3s var(--ease-wipe);
+    }
+
+    .button:hover>span[aria-hidden] {
+      transform: translate(3px, -3px);
+    }
+
+    .filter-button {
+      transition: background-color .18s, color .18s;
+    }
+
+    /* Images fade in once loaded; cards and headings reveal on scroll */
+    .product-media img,
+    .hero-visual>img,
+    .dialog-visual>img {
+      opacity: 0;
+      transition: opacity .7s ease, transform .9s var(--ease-out), filter .9s ease;
+    }
+
+    .product-media img.is-loaded,
+    .hero-visual>img.is-loaded,
+    .dialog-visual>img.is-loaded {
+      opacity: 1;
+    }
+
+    .product-open:hover .product-media img {
+      transform: scale(1.06);
+    }
+
+    .product-action {
+      display: block;
+      transform: translateY(100%);
+      transition: transform .32s var(--ease-wipe);
+    }
+
+    .product-open:hover .product-action,
+    .product-open:focus-visible .product-action {
+      transform: none;
+    }
+
+    @media (hover: none) {
+      .product-action {
+        transform: none;
+      }
+    }
+
+    .motion .product-card {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .8s var(--ease-out) calc(var(--col, 0) * 80ms), transform .8s var(--ease-out) calc(var(--col, 0) * 80ms);
+    }
+
+    .motion .product-card.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    .motion .reveal {
+      clip-path: inset(0 0 100% 0);
+      transform: translateY(24px);
+      transition: clip-path .95s var(--ease-wipe) var(--d, 0ms), transform .95s var(--ease-out) var(--d, 0ms);
+    }
+
+    .motion .reveal.in {
+      clip-path: inset(-20% -5% -30% -5%);
+      transform: none;
+    }
+
+    /* Product dialog */
+    .product-dialog[open] {
+      animation: dlg-in .6s var(--ease-out);
+    }
+
+    .product-dialog[open].closing {
+      animation: dlg-out .34s cubic-bezier(.7, 0, .84, 0) forwards;
+    }
+
+    .product-dialog[open] .dialog-visual {
+      animation: curtain 1s var(--ease-wipe) .15s both;
+    }
+
+    .product-dialog[open] .dialog-details>* {
+      animation: fade-up .8s var(--ease-out) calc(.3s + var(--k, 0) * 60ms) both;
+    }
+
+    .live-price {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 8px;
+      padding: 20px 22px;
+      background: var(--maroon);
+      color: var(--white);
+      border: 1px solid var(--gold);
+    }
+
+    .live-price .eyebrow {
+      color: var(--gold);
+    }
+
+    .live-price strong {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(40px, 4.4vw, 60px);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .live-price small {
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .fabric-option span {
+      transition: background-color .2s, color .2s, border-color .2s;
+    }
+
+    .fabric-option:hover span {
+      border-color: var(--black);
+    }
+
+    .upload-zone {
+      transition: background-color .25s, color .25s, border-color .25s;
+    }
+
+    .upload-symbol {
+      display: inline-block;
+      transition: transform .4s var(--ease-out);
+    }
+
+    .upload-zone:hover .upload-symbol,
+    .upload-zone.dragging .upload-symbol {
+      transform: rotate(90deg) scale(1.2);
+    }
+
+    .reference-item.is-new {
+      animation: pop .45s var(--ease-out) both;
+    }
+
+    .remove-reference:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* AI engine: scan line, progress bar, live terminal, developing result */
+    .dialog-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      background: linear-gradient(var(--gold), var(--gold)) 0 0 / 100% 3px no-repeat;
+    }
+
+    .product-dialog:has(.ai-engine[aria-busy="true"]) .dialog-visual::after {
+      opacity: 1;
+      animation: scan 1.4s cubic-bezier(.5, 0, .5, 1) infinite alternate;
+    }
+
+    .dialog-visual>img.synthesized {
+      animation: develop 1.2s var(--ease-out) both;
+    }
+
+    .ai-engine[aria-busy="true"] .synthesize-button::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      background: var(--gold);
+      animation: fill 3s linear forwards;
+    }
+
+    .ai-engine[aria-busy="true"] .terminal::after {
+      content: "\258C";
+      color: var(--gold);
+      animation: blink 1s steps(1) infinite;
+    }
+
+    .terminal:not([hidden]) {
+      animation: fade-up .45s var(--ease-out) both;
+    }
+
+    .price-breakdown:not([hidden]) .price-row {
+      animation: fade-up .6s var(--ease-out) calc(var(--r, 0) * 90ms) both;
+    }
+
+    .price-row:nth-child(2) {
+      --r: 1;
+    }
+
+    .price-row:nth-child(3) {
+      --r: 2;
+    }
+
+    .price-row:nth-child(4) {
+      --r: 3.5;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-delay: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        transition-delay: 0s !important;
+      }
+
+      .product-open:hover .product-media img {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#collection">Skip to collection</a>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="MYOO home">
+      <span class="wordmark">MYOO</span>
+      <span class="brand-tagline">From Karigar<br>to Closet</span>
+    </a>
+    <nav class="navigation" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#designer">AI Designer</a>
+      <a href="#collection">Collection</a>
+      <a href="#studio">MYOO Studio</a>
+      <a href="#makers">Our Makers</a>
+    </nav>
+    <button id="open-cart" class="header-cart" type="button" aria-label="Open cart">Cart (<span
+        id="cart-count">0</span>)</button>
+  </header>
+
+  <main>
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Indian craft. Individual expression.</p>
+        <h1 id="hero-title"><span class="line"><span>Make Your</span></span> <span class="line"><span>Own
+              <em>Outfit.</em></span></span></h1>
+        <p class="hero-description">
+          India's First AI-Powered Custom Clothing Ecosystem.
+        </p>
+        <a href="#studio" class="button light">
+          Create your MYOO <span aria-hidden="true">&#8599;</span>
+        </a>
+        <p class="hero-note">Your vision / Your fit / Your signature</p>
+      </div>
+
+      <div class="hero-visual">
+        <img id="hero-image" alt="Editorial fashion portrait" fetchpriority="high">
+        <span class="hero-float hero-float-top">Custom fit / 01</span>
+        <span class="hero-float hero-float-bottom">Your fabric / 02</span>
+        <div class="hero-image-caption">
+          <span class="eyebrow">The MYOO philosophy</span>
+          <p>Never off the rack.<br>Always your own.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="manifesto" aria-label="Our promise">
+      <p>Ready-made is a compromise. Custom is now effortless.</p>
+      <span class="eyebrow">Rooted in India<br>Designed around you</span>
+    </section>
+
+    <section id="collection" class="collection" aria-labelledby="collection-title">
+      <div class="collection-heading">
+        <div>
+          <p class="eyebrow">01 / The starting point</p>
+          <h2 id="collection-title">The Masterpiece<br>Collection.</h2>
+        </div>
+        <p>
+          A considered starting point, never a finished prescription.
+          Find your silhouette. Make it unmistakably yours.
+        </p>
+      </div>
+
+      <div class="filters">
+        <div class="gender-filters" role="group" aria-label="Gender">
+          <button class="filter-button" data-gender="all" aria-pressed="true">All</button>
+          <button class="filter-button" data-gender="men" aria-pressed="false">Men</button>
+          <button class="filter-button" data-gender="women" aria-pressed="false">Women</button>
+        </div>
+
+        <div class="filter-bottom">
+          <div class="style-filters" role="group" aria-label="Style within All">
+            <button class="filter-button" data-style="all" aria-pressed="true">Both styles</button>
+            <button class="filter-button" data-style="ethnic" aria-pressed="false">Ethnic</button>
+            <button class="filter-button" data-style="western" aria-pressed="false">Western</button>
+          </div>
+
+          <div class="price-filter">
+            <label for="price-filter" class="eyebrow">Base price</label>
+            <select id="price-filter">
+              <option value="all">All prices</option>
+              <option value="under-5000">Under ₹5,000</option>
+              <option value="under-10000">Under ₹10,000</option>
+              <option value="under-25000">Under ₹25,000</option>
+              <option value="under-50000">Under ₹50,000</option>
+              <option value="under-100000">Under ₹1,00,000</option>
+              <option value="above-100000">Above ₹1,00,000</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="collection-meta">
+        <span id="collection-count" role="status" aria-live="polite"></span>
+        <span>Fabric &amp; reference customization available</span>
+      </div>
+
+      <div id="product-grid" class="product-grid" aria-label="Products"></div>
+
+      <div id="empty-state" class="empty-state" hidden>
+        <h3>A different starting point.</h3>
+        <p>No pieces match this combination of filters.</p>
+        <button id="reset-filters" class="button">Reset filters</button>
+      </div>
+
+      <div id="scroll-sentinel" class="pagination">
+        <p id="pagination-status" role="status" aria-live="polite"></p>
+        <button id="load-more" class="button">Discover more pieces +</button>
+      </div>
+    </section>
+
+    <div class="cut-line" aria-hidden="true">AI Haute Couture / from reference to bespoke redesign</div>
+
+    <section id="designer" class="studio-section designer-section" aria-labelledby="designer-title">
+      <div class="section-topline">
+        <div>
+          <p class="eyebrow">01.5 / MYOO AI Fashion Designer</p>
+          <h2 id="designer-title">Analyse your outfit.<br><em>Reimagine the design.</em></h2>
+        </div>
+        <p>Upload an outfit image. Our AI atelier examines the cut, fabric, embroidery, and details, then crafts a
+          bespoke redesigned garment based on your creative vision.</p>
+      </div>
+
+      <div class="studio-layout">
+        <div id="designer-preview" class="studio-preview designer-preview">
+          <img id="designer-preview-image" src="Zardozi Maroon Lehenga.jpg"
+            alt="MYOO AI Fashion Designer outfit preview">
+          <div class="preview-grid" aria-hidden="true"></div>
+          <span id="designer-stamp" class="preview-stamp">Awaiting your outfit / 001</span>
+
+          <div id="designer-view-toggle" class="designer-view-toggle" hidden>
+            <button type="button" id="toggle-view-original" class="mini-button">Original</button>
+            <button type="button" id="toggle-view-generated" class="mini-button is-active">Redesigned</button>
+          </div>
+
+          <div class="preview-details">
+            <span class="eyebrow" id="designer-preview-eyebrow">Atelier Concept View</span>
+            <strong id="designer-preview-name">Upload Outfit Image</strong>
+            <p id="designer-preview-desc">Upload a reference photo to begin AI analysis. Once analyzed, you can request
+              custom couture modifications and preview your redesigned garment.</p>
+          </div>
+        </div>
+
+        <div class="studio-engine designer-engine">
+          <span class="eyebrow">Step 01 / Image upload &amp; vision analysis</span>
+          <h3>Reference Outfit Analysis</h3>
+
+          <div class="studio-upload">
+            <input id="designer-file-input" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+            <button id="designer-dropzone" class="reference-drop" type="button"
+              aria-label="Upload outfit reference image">
+              <span>
+                <strong id="designer-drop-label">+ Select or Drop Outfit Image</strong>
+                <small id="designer-drop-sub">JPG, PNG, or WebP &middot; Up to 10 MB</small>
+              </span>
+            </button>
+
+            <div id="designer-selected-file" class="designer-selected-file" hidden>
+              <div class="selected-file-info">
+                <span class="file-icon">&#128087;</span>
+                <span id="designer-file-name" class="file-name"></span>
+                <span id="designer-file-size" class="file-size"></span>
+              </div>
+              <button type="button" id="designer-file-remove" class="mini-button"
+                aria-label="Remove uploaded image">Change Image</button>
+            </div>
+          </div>
+
+          <button id="analyse-outfit-btn" class="button generate-button" type="button" disabled>
+            <span class="btn-text">Analyse My Outfit</span><span aria-hidden="true">&#8599;</span>
+          </button>
+
+          <div id="designer-analysis-status" class="studio-log" role="status" aria-live="polite">AI DESIGNER READY /
+            Upload an outfit reference image to begin.</div>
+
+          <div id="designer-error-banner" class="designer-error-banner" role="alert" hidden>
+            <strong id="designer-error-title">Request Issue</strong>
+            <p id="designer-error-message"></p>
+            <small id="designer-error-hint"></small>
+          </div>
+
+          <!-- Step 02: AI Analysis & Enhancement Suggestions (revealed after analysis) -->
+          <div id="designer-analysis-results" class="designer-analysis-results" hidden>
+            <div class="designer-heading-row">
+              <span class="eyebrow">Step 02 / AI Design Breakdown</span>
+              <span class="simulation-tag" id="designer-provider-tag">AI ATELIER</span>
+            </div>
+
+            <div class="designer-specs-grid">
+              <div class="spec-card">
+                <span class="spec-label">Outfit Type</span>
+                <strong id="spec-outfit-type" class="spec-val">&mdash;</strong>
+              </div>
+              <div class="spec-card">
+                <span class="spec-label">Likely Fabric</span>
+                <strong id="spec-fabric" class="spec-val">&mdash;</strong>
+              </div>
+              <div class="spec-card">
+                <span class="spec-label">Neckline / Collar</span>
+                <strong id="spec-neckline" class="spec-val">&mdash;</strong>
+              </div>
+              <div class="spec-card">
+                <span class="spec-label">Sleeves</span>
+                <strong id="spec-sleeves" class="spec-val">&mdash;</strong>
+              </div>
+              <div class="spec-card spec-full">
+                <span class="spec-label">Visible Colours</span>
+                <div id="spec-colors" class="spec-tags"></div>
+              </div>
+              <div class="spec-card spec-full">
+                <span class="spec-label">Embroidery &amp; Craft</span>
+                <p id="spec-embroidery" class="spec-desc">&mdash;</p>
+              </div>
+              <div class="spec-card spec-full">
+                <span class="spec-label">Patterns &amp; Motifs</span>
+                <p id="spec-patterns" class="spec-desc">&mdash;</p>
+              </div>
+              <div class="spec-card spec-full">
+                <span class="spec-label">Other Visible Details</span>
+                <p id="spec-other" class="spec-desc">&mdash;</p>
+              </div>
+            </div>
+
+            <div class="designer-enhancement-box">
+              <span class="eyebrow">Atelier Critique &amp; Enhancement Potential</span>
+              <p id="designer-enhancement-text" class="enhancement-text"></p>
+            </div>
+
+            <div class="designer-recommendations-box">
+              <span class="eyebrow">Recommended Modifications (Click to select &amp; edit)</span>
+              <div id="designer-rec-chips" class="prompt-chips"></div>
+            </div>
+          </div>
+
+          <!-- Step 03: Custom Modification & Generation -->
+          <div id="designer-generation-step" class="designer-generation-step" hidden>
+            <span class="eyebrow prompt-label">Step 03 / Custom Modification Request</span>
+            <label class="sr-only" for="designer-instruction-input">Custom design modification</label>
+            <textarea id="designer-instruction-input" class="idea-input" maxlength="600"
+              placeholder="e.g. Change the colour to wine red, add more traditional antique zardozi embroidery on the border and sleeves, and give it a modern sweetheart neckline..."></textarea>
+
+            <button id="generate-design-btn" class="button generate-button" type="button">
+              <span class="btn-text">Generate My Design</span><span aria-hidden="true">&#8599;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cut-line" aria-hidden="true">Cutting line / your idea becomes a garment</div>
+
+    <section id="studio" class="studio-section" aria-labelledby="studio-title">
+      <div class="section-topline">
+        <div>
+          <p class="eyebrow">02 / MYOO Studio</p>
+          <h2 id="studio-title">Imagine it.<br><em>Make it yours.</em></h2>
+        </div>
+        <p>Start with a sentence, a memory, or a mood. Our studio turns your direction into a considered custom-outfit
+          brief.</p>
+      </div>
+
+      <div class="studio-layout">
+        <div id="studio-preview" class="studio-preview">
+          <img id="studio-preview-image" src="Zardozi Maroon Lehenga.jpg" alt="MYOO custom outfit concept preview">
+          <div class="preview-grid" aria-hidden="true"></div>
+          <span id="preview-stamp" class="preview-stamp">Awaiting your brief / 001</span>
+          <div class="preview-details">
+            <span class="eyebrow">Live outfit direction</span>
+            <strong id="preview-name">The Maroon Heirloom</strong>
+            <p id="preview-description">Choose a prompt and let the studio create a custom direction. This is a visual
+              concept preview, not a production render.</p>
+          </div>
+        </div>
+
+        <div class="studio-engine">
+          <span class="eyebrow">MYOO / concept engine v.01</span>
+          <h3>Describe your dream outfit.</h3>
+          <label class="eyebrow prompt-label" for="idea-input">Your outfit brief</label>
+          <textarea id="idea-input" class="idea-input" maxlength="420"
+            placeholder="A pastel pink Rajasthani-inspired lehenga with a modern corset blouse and delicate mirror work..."></textarea>
+
+          <div id="prompt-chips" class="prompt-chips" aria-label="Quick idea prompts">
+            <button type="button" class="prompt-chip"
+              data-prompt="A pastel pink Rajasthani lehenga with mirror work and a sculpted corset blouse">Pastel
+              Rajasthani</button>
+            <button type="button" class="prompt-chip"
+              data-prompt="An ivory silk sherwani with architectural embroidery for a twilight wedding">Ivory
+              groom</button>
+            <button type="button" class="prompt-chip"
+              data-prompt="A midnight blue Indo-western co-ord with hand-drawn floral motifs">Midnight fusion</button>
+          </div>
+
+          <div class="prompt-tools">
+            <span class="eyebrow">Text + image guided</span>
+            <button id="surprise-button" class="mini-button" type="button">Surprise me &#8594;</button>
+          </div>
+
+          <div class="studio-upload">
+            <input id="studio-reference-input" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
+            <button id="studio-reference-drop" class="reference-drop" type="button">
+              <span>
+                <strong>+ Add motif references</strong>
+                <small>Drop JPG, PNG or WebP / up to 5 images</small>
+              </span>
+            </button>
+            <div id="studio-reference-grid" class="studio-ref-grid" aria-label="MYOO Studio reference images"></div>
+          </div>
+
+          <button id="generate-outfit" class="button generate-button" type="button">
+            <span>Synthesize custom outfit</span><span aria-hidden="true">&#8599;</span>
+          </button>
+          <div id="studio-log" class="studio-log" role="status" aria-live="polite">STUDIO READY / Add a brief to begin.
+          </div>
+
+          <section id="customizer" class="customizer" hidden aria-labelledby="customizer-title">
+            <span class="eyebrow">Design controls / live</span>
+            <h3 id="customizer-title">Shape the details.</h3>
+            <div class="customizer-grid">
+              <label class="control-group"><span>Neckline</span>
+                <select id="neckline-select">
+                  <option value="Sculpted sweetheart">Sculpted sweetheart</option>
+                  <option value="Classic V-neck">Classic V-neck</option>
+                  <option value="High boat neck">High boat neck</option>
+                  <option value="Bandhgala collar">Bandhgala collar</option>
+                </select>
+              </label>
+              <label class="control-group"><span>Sleeve length</span>
+                <select id="sleeve-select">
+                  <option value="Sleeveless">Sleeveless</option>
+                  <option value="Three-quarter sleeve">Three-quarter sleeve</option>
+                  <option value="Full sleeve">Full sleeve</option>
+                  <option value="Statement sleeve">Statement sleeve</option>
+                </select>
+              </label>
+              <label class="control-group"><span>Silhouette</span>
+                <select id="silhouette-select">
+                  <option value="Full circular skirt">Full circular skirt</option>
+                  <option value="Clean A-line">Clean A-line</option>
+                  <option value="Draped column">Draped column</option>
+                  <option value="Structured jacket set">Structured jacket set</option>
+                </select>
+              </label>
+              <label class="control-group"><span>Fabric</span>
+                <select id="studio-fabric-select">
+                  <option value="silk">Pure Silk / 1.00x</option>
+                  <option value="organza">Organza / 1.15x</option>
+                  <option value="velvet">Velvet / 1.30x</option>
+                  <option value="handloom">Handloom Banarasi / 1.55x</option>
+                </select>
+              </label>
+              <div class="addons" aria-label="Customisation add-ons">
+                <label class="addon"><input type="checkbox" value="mirror" data-price="1000"><span>Mirror work
+                    +&#8377;1,000</span></label>
+                <label class="addon"><input type="checkbox" value="zari" data-price="3500"><span>Zari detailing
+                    +&#8377;3,500</span></label>
+                <label class="addon"><input type="checkbox" value="hand" data-price="7000"><span>Hand embroidery
+                    +&#8377;7,000</span></label>
+              </div>
+            </div>
+            <div class="studio-total">
+              <div><span class="eyebrow">Your MYOO estimate</span><strong id="studio-total">&#8377;24,500</strong></div>
+              <small id="studio-formula">Base &#8377;24,500 × Pure Silk (1.00x)</small>
+            </div>
+            <a class="button journey-next" href="#try-on">Preview on you <span aria-hidden="true">&#8595;</span></a>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="try-on" class="tryon-section" aria-labelledby="tryon-title">
+      <div class="section-topline">
+        <div>
+          <p class="eyebrow">03 / AI Virtual Try-On</p>
+          <h2 id="tryon-title">See the possibility<br><em>on you.</em></h2>
+        </div>
+        <p>A privacy-first VTO interface designed for an image-generation endpoint. This prototype never uploads images
+          beyond your browser.</p>
+      </div>
+
+      <div class="tryon-grid">
+        <div class="tryon-upload">
+          <span class="eyebrow">01 / You</span>
+          <h3>Your clear photo.</h3>
+          <p>Front-facing, good light, full or three-quarter body.</p>
+          <input id="person-input" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+          <button id="person-drop" class="tryon-drop" type="button"><span>+ Upload your photo</span></button>
+        </div>
+        <div class="tryon-upload">
+          <span class="eyebrow">02 / Outfit</span>
+          <h3>Your MYOO design.</h3>
+          <p>Use your generated direction or upload an outfit image.</p>
+          <input id="outfit-input" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+          <button id="outfit-drop" class="tryon-drop" type="button"><span>+ Upload garment image</span></button>
+          <button id="use-studio-outfit" class="mini-button" type="button">Use Studio concept</button>
+        </div>
+        <div class="tryon-result">
+          <span class="eyebrow">03 / Result</span>
+          <h3>Virtual fitting room.</h3>
+          <p id="tryon-result-copy">Your comparison preview will appear here once both images are selected.</p>
+          <div id="result-empty" class="result-empty">VTO READY<br><br>Face, skin tone, body proportions and background
+            are marked as preservation constraints for the connected API.</div>
+          <div id="comparison" class="comparison" hidden>
+            <img id="before-image" alt="Your uploaded photo before virtual try-on">
+            <div id="comparison-after" class="comparison-after"><img id="after-image"
+                alt="Simulated virtual try-on preview"></div>
+          </div>
+          <input id="compare-slider" class="compare-slider" type="range" min="0" max="100" value="50"
+            aria-label="Before and after comparison" hidden>
+          <div class="quality-controls" aria-label="Virtual try-on settings">
+            <label><input type="checkbox" checked> Realistic</label>
+            <label><input type="checkbox" checked> High detail</label>
+            <label><input type="checkbox" checked> Preserve background</label>
+          </div>
+          <button id="process-tryon" class="button tryon-process" type="button" disabled>Start virtual try-on <span
+              aria-hidden="true">&#8599;</span></button>
+          <div id="tryon-stage" class="tryon-stage" role="status" aria-live="polite"></div>
+          <button id="download-result" class="button download-button" type="button" hidden>Download result <span
+              aria-hidden="true">&#8595;</span></button>
+        </div>
+      </div>
+    </section>
+
+    <div class="cut-line" aria-hidden="true">Measured for your body / made by human hands</div>
+
+    <section id="makers" class="makers-section" aria-labelledby="makers-title">
+      <div class="section-topline">
+        <div>
+          <p class="eyebrow">04 / Fit + karigar connection</p>
+          <h2 id="makers-title">Tailored by data.<br><em>Made with devotion.</em></h2>
+        </div>
+        <p>Choose your fit path, then match the brief with makers whose craft speaks the same language.</p>
+      </div>
+
+      <div class="makers-layout">
+        <div class="fit-panel">
+          <span class="eyebrow">MYOO Fit / private by design</span>
+          <h3>Fit, your way.</h3>
+          <div class="fit-tabs" role="tablist" aria-label="Choose a fit method">
+            <button class="fit-tab" type="button" role="tab" aria-selected="true" aria-controls="standard-fit"
+              data-fit-view="standard-fit">Standard</button>
+            <button class="fit-tab" type="button" role="tab" aria-selected="false" aria-controls="custom-fit"
+              data-fit-view="custom-fit">Custom</button>
+            <button class="fit-tab" type="button" role="tab" aria-selected="false" aria-controls="ar-fit"
+              data-fit-view="ar-fit">AR measure</button>
+          </div>
+          <div id="standard-fit" class="fit-view" role="tabpanel">
+            <p>Start from your usual size. Your selected karigar will confirm ease and final proportions before cutting.
+            </p>
+            <div class="size-options" aria-label="Standard size">
+              <button class="size-button" type="button" aria-pressed="false">XS</button><button class="size-button"
+                type="button" aria-pressed="false">S</button><button class="size-button" type="button"
+                aria-pressed="true">M</button><button class="size-button" type="button"
+                aria-pressed="false">L</button><button class="size-button" type="button"
+                aria-pressed="false">XL</button>
+            </div>
+          </div>
+          <div id="custom-fit" class="fit-view" role="tabpanel" hidden>
+            <div class="measure-grid">
+              <label>Bust <input id="measure-bust" inputmode="decimal" placeholder="cm"></label>
+              <label>Waist <input id="measure-waist" inputmode="decimal" placeholder="cm"></label>
+              <label>Hip <input id="measure-hip" inputmode="decimal" placeholder="cm"></label>
+              <label>Shoulder <input id="measure-shoulder" inputmode="decimal" placeholder="cm"></label>
+            </div>
+          </div>
+          <div id="ar-fit" class="fit-view" role="tabpanel" hidden>
+            <video id="ar-video" class="ar-video" autoplay muted playsinline></video>
+            <p>With your permission, the local camera preview helps demonstrate an API-ready measurement flow. No camera
+              frames leave this device in this prototype.</p>
+            <button id="start-ar" class="button light" type="button">Enable camera</button>
+            <div id="ar-readout" class="ar-readout"></div>
+          </div>
+        </div>
+        <div class="maker-panel">
+          <span class="eyebrow">MYOO Match / artisan network</span>
+          <h3>Meet your possible makers.</h3>
+          <p id="maker-intro">We will match your fabric, embellishment, fit path, and current MYOO budget to three
+            ateliers.</p>
+          <button id="match-makers" class="button match-button" type="button">Find my karigars <span
+              aria-hidden="true">&#8599;</span></button>
+          <div id="makers-grid" class="makers-grid" aria-live="polite"></div>
+          <div id="maker-status" class="maker-status">MATCH ENGINE READY / Generate a Studio look to make this match
+            specific.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vault" class="vault-section" aria-labelledby="vault-title">
+      <div class="section-topline">
+        <div>
+          <p class="eyebrow">05 / Digital wardrobe vault</p>
+          <h2 id="vault-title">Keep every<br><em>version of you.</em></h2>
+        </div>
+        <div class="vault-head-action">
+          <p>Save your finished MYOO directions to a persistent browser-based wardrobe. Ready to connect to an account
+            and 3D-render service.</p>
+          <button id="save-vault" class="button vault-save" type="button">Save current MYOO <span
+              aria-hidden="true">+</span></button>
+        </div>
+      </div>
+      <div id="vault-grid" class="vault-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="craft-section" aria-labelledby="craft-title">
+      <div class="craft-intro">
+        <p class="eyebrow">06 / From Karigar to Closet</p>
+        <h2>Technology meets<br>the human hand.</h2>
+        <p>
+          Your ideas deserve more than a standard size. MYOO brings together
+          AI-assisted personalization, made-to-measure intent, and the
+          artistry of Indian karigars.
+        </p>
+      </div>
+      <div class="craft-steps">
+        <div class="craft-step">
+          <span>01</span>
+          <div>
+            <h3>Find your foundation.</h3>
+            <p>Start with an ethnic or western silhouette that speaks to you.</p>
+          </div>
+        </div>
+        <div class="craft-step">
+          <span>02</span>
+          <div>
+            <h3>Bring your references.</h3>
+            <p>Add patterns, motifs, and details. Choose the fabric that feels right.</p>
+          </div>
+        </div>
+        <div class="craft-step">
+          <span>03</span>
+          <div>
+            <h3>Explore your expression.</h3>
+            <p>Generate an AI outfit image and see your custom price, itemized.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="payment-success" aria-labelledby="success-title" hidden>
+    <div class="success-content">
+      <p class="eyebrow">MYOO / Order received</p>
+      <h1 id="success-title">Thank you for your payment.</h1>
+      <p id="success-details">Your order has been placed.</p>
+      <button id="continue-shopping" class="button light" type="button">Continue shopping</button>
+    </div>
+  </section>
+
+  <footer class="site-footer site-footer-luxury" aria-label="MYOO footer">
+    <section class="footer-newsletter" aria-labelledby="footer-newsletter-title">
+      <div>
+        <p class="eyebrow">Join the MYOO circle</p>
+        <h2 id="footer-newsletter-title">The next piece<br><em>starts here.</em></h2>
+        <p>Occasionwear ideas, maker stories, and first access to new MYOO directions—sent occasionally.</p>
+      </div>
+      <form id="footer-newsletter-form" class="newsletter-form">
+        <label class="sr-only" for="footer-email">Email address</label>
+        <input id="footer-email" type="email" placeholder="Email address" autocomplete="email" required>
+        <button type="submit">Subscribe &#8599;</button>
+        <p id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <div class="footer-columns">
+      <nav class="footer-column" aria-label="MYOO brand links">
+        <h3>Brand</h3>
+        <ul>
+          <li><a href="#home">About MYOO</a></li>
+          <li><a href="#collection">Men</a></li>
+          <li><a href="#collection">Women</a></li>
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#vault">Digital wardrobe</a></li>
+          <li><a href="#craft-title">Journal</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-column" aria-label="MYOO service links">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="#makers">Find a maker</a></li>
+          <li><a href="#makers">Custom fit</a></li>
+          <li><a href="#studio">MYOO Studio</a></li>
+          <li><a href="#try-on">Virtual try-on</a></li>
+          <li><a href="#studio">Gift a MYOO</a></li>
+          <li><a href="#makers">Maker registration</a></li>
+        </ul>
+      </nav>
+
+      <nav id="footer-legal" class="footer-column" aria-label="MYOO legal links">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#footer-legal">Conditions of sale</a></li>
+          <li><a href="#footer-legal">Privacy notice</a></li>
+          <li><a href="#footer-legal">Cookie notice</a></li>
+          <li><a href="#footer-legal">Cookie settings</a></li>
+          <li><a href="#footer-legal">Terms of use</a></li>
+          <li><a href="#footer-legal">Accessibility</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-column" aria-label="MYOO help links">
+        <h3>Help and contacts</h3>
+        <ul>
+          <li><a href="#makers">Need help?</a></li>
+          <li><a href="#makers">Request a consultation</a></li>
+          <li><a href="#vault">Track an order</a></li>
+          <li><a href="#makers">Alterations &amp; returns</a></li>
+          <li><a href="#home">Careers</a></li>
+          <li><a href="#home">Contact MYOO</a></li>
+        </ul>
+      </nav>
+
+      <section class="footer-column" aria-labelledby="commitments-title">
+        <h3 id="commitments-title">Our commitments</h3>
+        <ul class="commitment-list">
+          <li class="commitment"><span class="commitment-icon" aria-hidden="true">▣</span><span><strong>Free
+                delivery</strong><small>On qualifying custom orders</small></span></li>
+          <li class="commitment"><span class="commitment-icon" aria-hidden="true">✦</span><span><strong>Made by Indian
+                karigars</strong><small>Craft and credit stay connected</small></span></li>
+          <li class="commitment"><span class="commitment-icon" aria-hidden="true">♧</span><span><strong>Safe &amp;
+                secure payments</strong><small>Checkout-ready architecture</small></span></li>
+          <li class="commitment"><span class="commitment-icon" aria-hidden="true">↻</span><span><strong>Easy
+                alterations</strong><small>Fit support through your maker</small></span></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="footer-lower">
+      <div class="footer-country"><span aria-label="India" role="img">🇮🇳</span><strong>India</strong><span>|</span><a
+          href="#footer-legal">Change country</a><span aria-hidden="true">›</span></div>
+      <div class="footer-social"><span>Follow us on social media</span><a href="#home"
+          aria-label="Instagram">Instagram</a><a href="#home" aria-label="Pinterest">Pinterest</a><a href="#home"
+          aria-label="LinkedIn">LinkedIn</a></div>
+      <div class="footer-copy">MYOO Copyrights 2026 · All rights reserved.</div>
+    </div>
+
+    <div class="footer-brand-lockup" aria-label="MYOO">MY<span class="brand-cross" aria-hidden="true">+</span>OO</div>
+    <p class="footer-disclaimer"> From Karigar to Closet.
+      Made personal.</p>
+  </footer>
+
+  <dialog id="product-dialog" class="product-dialog" aria-labelledby="modal-title" aria-describedby="modal-description">
+    <header class="dialog-header">
+      <span class="wordmark">MYOO</span>
+      <span class="eyebrow">Your outfit. Your authorship.</span>
+      <button id="close-dialog" class="close-button" autofocus>Close &#215;</button>
+    </header>
+
+    <div class="dialog-layout">
+      <div class="dialog-visual">
+        <img id="modal-image" alt="">
+        <div class="image-status" aria-live="polite">
+          <span id="image-status-title" class="eyebrow">Original silhouette</span>
+          <p id="image-status-description">A foundation for your own expression.</p>
+        </div>
+      </div>
+
+      <div class="dialog-details">
+        <p id="modal-category" class="eyebrow"></p>
+        <h2 id="modal-title"></h2>
+        <p id="modal-description" class="product-description"></p>
+        <p class="base-price">
+          <span id="modal-base-price"></span>
+          <small> / original base price</small>
+        </p>
+
+        <div class="live-price">
+          <span class="eyebrow">Live price</span>
+          <strong id="live-total"></strong>
+          <small id="live-formula" aria-live="polite"></small>
+        </div>
+        <button id="add-to-cart" class="button add-cart-button" type="button">Add to cart</button>
+
+        <fieldset id="fabric-fieldset">
+          <legend class="eyebrow">01 / Choose your fabric</legend>
+          <div id="fabric-options" class="fabric-options"></div>
+        </fieldset>
+
+        <section class="ai-engine" aria-labelledby="engine-title">
+          <div class="engine-heading">
+            <h3 id="engine-title">AI Synthesis Engine</h3>
+            <span id="ai-status-tag" class="simulation-tag">CHECKING / AI</span>
+          </div>
+
+          <p class="engine-description">
+            Generate a new outfit image from this product and your references.
+            Your images are sent to OpenAI for generation and are not stored by this website.
+          </p>
+
+          <input id="reference-input" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
+
+          <button id="upload-zone" class="upload-zone" type="button">
+            <span class="upload-symbol" aria-hidden="true">+</span>
+            <strong>Upload Reference Images (Add styles, patterns, or motifs)</strong>
+            <small>Drop images here or click to browse</small>
+          </button>
+
+          <p class="upload-help">
+            JPG, PNG or WebP. Up to 8 images, 10 MB each.
+            Each reference adds 1% of the selected outfit price.
+            References are cleared when this preview closes.
+          </p>
+
+          <p id="upload-error" class="upload-error" role="alert" hidden></p>
+          <div id="reference-grid" class="reference-grid" aria-label="Uploaded references"></div>
+
+          <button id="synthesize-button" class="button synthesize-button">
+            <span>Synthesize Custom Outfit</span>
+            <span aria-hidden="true">&#8599;</span>
+          </button>
+
+          <div id="engine-status" class="terminal" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+
+          <section id="price-breakdown" class="price-breakdown" hidden>
+            <h3>Your custom estimate.</h3>
+            <dl>
+              <div class="price-row">
+                <dt>Original product price</dt>
+                <dd id="breakdown-original"></dd>
+              </div>
+              <div class="price-row">
+                <dt id="breakdown-fabric-label"></dt>
+                <dd id="breakdown-base"></dd>
+              </div>
+              <div class="price-row">
+                <dt id="breakdown-fee-label"></dt>
+                <dd id="breakdown-fee"></dd>
+              </div>
+              <div class="price-row total">
+                <dt>Final price</dt>
+                <dd id="breakdown-total"></dd>
+              </div>
+            </dl>
+            <p class="price-note">
+              Estimate only. Measurement collection, production,
+              checkout, shipping, and tax handling are not connected.
+            </p>
+          </section>
+        </section>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="cart-dialog" class="flow-dialog" aria-labelledby="cart-title">
+    <header class="flow-header">
+      <h2 id="cart-title">Your cart</h2>
+      <button id="close-cart" class="close-button" type="button">Close &#215;</button>
+    </header>
+    <div class="flow-content">
+      <p id="cart-empty" class="cart-empty">Your cart is empty. Explore the collection to find your piece.</p>
+      <div id="cart-items"></div>
+      <div class="flow-total"><span>Subtotal</span><span id="cart-total"></span></div>
+      <div class="flow-actions">
+        <button id="continue-browsing" class="close-button" type="button">Continue browsing</button>
+        <button id="go-to-checkout" class="button" type="button">Proceed to checkout</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="checkout-dialog" class="flow-dialog" aria-labelledby="checkout-title">
+    <header class="flow-header">
+      <h2 id="checkout-title">Delivery &amp; payment</h2>
+      <button id="close-checkout" class="close-button" type="button">Close &#215;</button>
+    </header>
+    <form id="checkout-form" class="flow-content">
+      <section class="checkout-section" aria-labelledby="address-title">
+        <h3 id="address-title">Delivery address</h3>
+        <div class="checkout-fields">
+          <label>Full name<input name="name" autocomplete="name" required></label>
+          <label>Phone number<input name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label>
+          <label class="full-width">Address<textarea name="address" autocomplete="street-address"
+              required></textarea></label>
+          <label>City<input name="city" autocomplete="address-level2" required></label>
+          <label>State<input name="state" autocomplete="address-level1" required></label>
+          <label>PIN code<input name="postalCode" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{6}"
+              title="Enter a 6-digit PIN code" required></label>
+        </div>
+      </section>
+      <section class="checkout-section" aria-labelledby="payment-title">
+        <h3 id="payment-title">Payment method</h3>
+        <div class="payment-options">
+          <label class="payment-option"><input type="radio" name="paymentMethod" value="UPI" required> UPI</label>
+          <label class="payment-option"><input type="radio" name="paymentMethod" value="Credit or debit card" required>
+            Credit or debit card</label>
+          <label class="payment-option"><input type="radio" name="paymentMethod" value="Net banking" required> Net
+            banking</label>
+          <label class="payment-option"><input type="radio" name="paymentMethod" value="Cash on delivery" required> Cash
+            on delivery</label>
+        </div>
+      </section>
+      <p class="checkout-note">Demo checkout only. No payment is collected or charged on this page.</p>
+      <div class="flow-total"><span>Total due</span><span id="checkout-total"></span></div>
+      <div class="flow-actions">
+        <button class="close-button" id="back-to-cart" type="button">Back to cart</button>
+        <button class="button pay-button" type="submit">Pay now</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+    "use strict";
+
+    const $ = selector => document.querySelector(selector);
+    const $$ = selector => [...document.querySelectorAll(selector)];
+
+    const money = value => new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0
+    }).format(value);
+
+    /*
+     * SAMPLE ASSET PATHS, NOT EXISTING PROJECT FILES.
+     * Replace image values with your actual local references.
+     * Missing catalog assets deliberately render a branded graphic.
+     * Set HERO_IMAGE to a local file to avoid the remote demo photograph.
+     */
+    const HERO_IMAGE = "Zardozi Maroon Lehenga.jpg";
+
+    const catalogSeeds = [
+      { title: "Zardozi Maroon Lehenga", gender: "women", style: "ethnic", price: 68000, image: "Zardozi Maroon Lehenga.jpg" },
+      { title: "Royal Ivory Silk Sherwani", gender: "men", style: "ethnic", price: 24500, image: "Royal Ivory Silk Sherwani.jpg" },
+      { title: "Velvet Embroidered Anarkali", gender: "women", style: "ethnic", price: 18900, image: "Velvet Embroidered Anarkali.jpg" },
+      { title: "Classic Italian Tuxedo", gender: "men", style: "western", price: 42000, image: "Classic Italian Tuxedo.jpg" },
+      { title: "Handloom Banarasi Saree", gender: "women", style: "ethnic", price: 18500, image: "Handloom Banarasi Saree.jpg" },
+      { title: "Jodhpuri Suit", gender: "men", style: "ethnic", price: 32000, image: "Jodhpuri Suit.jpg" },
+      { title: "Palazzo Kurta Set", gender: "women", style: "western", price: 6500, image: "Palazzo Kurta Set.jpg" },
+      { title: "Indo-Western Jacket Set", gender: "men", style: "western", price: 16000, image: "Indo-Western Jacket Set.jpg" },
+      { title: "Midnight Blue Bandhgala", gender: "men", style: "ethnic", price: 28500, image: "Midnight Blue Bandhgala.jpg" },
+      { title: "Gharara Set", gender: "women", style: "ethnic", price: 8900, image: "Gharara Set.jpg" },
+      { title: "Pastel Floral Lehenga", gender: "women", style: "western", price: 54000, image: "Pastel Floral Lehenga.jpg" },
+      { title: "Bespoke Silk Kurta Set", gender: "all", style: "western", price: 4500, image: "Bespoke Silk Kurta Set.jpg" },
+      { title: "Hand-Block Cotton Kurta", gender: "all", style: "ethnic", price: 4800, image: "Hand-Block Cotton Kurta.jpg" },
+      { title: "Gota Patti Sharara", gender: "women", style: "ethnic", price: 125000, image: "Gota Patti Sharara.jpg" },
+      { title: "Nehru Jacket & Kurta Set", gender: "men", style: "ethnic", price: 115000, image: "Nehru Jacket & Kurta Set.jpg" },
+      { title: "Pathani Suit", gender: "men", style: "western", price: 3500, image: "Pathani Suit.jpg" },
+      { title: "Chanderi Silk Saree", gender: "women", style: "western", price: 12000, image: "Chanderi Silk Saree.jpg" },
+      { title: "Velvet Embroidered Anarkali", gender: "women", style: "ethnic", price: 22500, image: "Velvet Embroidered Anarkali.jpg" },
+      { title: "Bespoke Silk Kurta Set", gender: "all", style: "western", price: 4200, image: "Bespoke Silk Kurta Set.jpg" },
+      { title: "Nehru Jacket & Kurta Set", gender: "men", style: "ethnic", price: 9500, image: "Nehru Jacket & Kurta Set.jpg" }
+    ];
+
+    // Explicit demo variations create a finite 120-piece browsable catalog.
+    // Replace this expansion with your real product data when integrating.
+    const editions = [
+      { name: "", multiplier: 1 },
+      { name: "Atelier", multiplier: 1.12 },
+      { name: "Signature", multiplier: 1.24 },
+      { name: "Studio", multiplier: .92 },
+      { name: "Archive", multiplier: 1.4 },
+      { name: "Couture", multiplier: 1.8 }
+    ];
+
+    const products = editions.flatMap((edition, editionIndex) =>
+      catalogSeeds.map((product, productIndex) => ({
+        ...product,
+        id: `piece-${editionIndex}-${productIndex}`,
+        title: edition.name ? `${product.title} / ${edition.name}` : product.title,
+        price: Math.round(product.price * edition.multiplier / 100) * 100
+      }))
+    );
+
+    const fabricChoices = [
+      { id: "cotton", name: "Cotton Blend", multiplier: .7 },
+      { id: "silk", name: "Pure Silk", multiplier: 1 },
+      { id: "zari", name: "Raw Silk & Zari", multiplier: 1.35 },
+      { id: "heritage", name: "Heritage Handwork", multiplier: 1.9 }
+    ];
+
+    const filters = { gender: "all", style: "all", price: "all" };
+    const PAGE_SIZE = 12;
+    const REFERENCE_IMAGE_RATE = 0.01;
+    const MAX_IMAGES = 8;
+    const MAX_FILE_SIZE = 10 * 1024 * 1024;
+    const allowedTypes = new Set([
+      "image/jpeg", "image/png", "image/webp"
+    ]);
+
+    let matchingProducts = [];
+    let displayedCount = 0;
+    let activeProduct = null;
+    let activeFabric = fabricChoices[1];
+    let references = [];
+    let nextReferenceId = 0;
+    let shownReferenceId = 0;
+    let processing = false;
+    let synthesisController = null;
+    let opener = null;
+    const cart = [];
+    let nextCartId = 0;
+    let openCartAfterProductClose = false;
+    let openCheckoutAfterCartClose = false;
+    let openCartAfterCheckoutClose = false;
+
+    function escapeXML(value) {
+      return String(value).replace(/[<>&"']/g, character => ({
+        "<": "&lt;", ">": "&gt;", "&": "&amp;",
+        '"': "&quot;", "'": "&apos;"
+      })[character]);
+    }
+
+    function fallbackGraphic(title) {
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+          <rect width="900" height="1200" fill="#3a101a"/>
+          <rect x="42" y="42" width="816" height="1116" fill="none" stroke="#c69c6d" stroke-width="2"/>
+          <path d="M140 940 L760 260 M140 260 L760 940" stroke="#c69c6d" stroke-width="1"/>
+          <rect x="90" y="420" width="720" height="350" fill="#3a101a"/>
+          <text x="450" y="550" fill="#ffffff" font-family="Georgia,serif" font-size="105" text-anchor="middle">MYOO</text>
+          <text x="450" y="625" fill="#c69c6d" font-family="Arial,sans-serif" font-size="18" letter-spacing="5" text-anchor="middle">FROM KARIGAR TO CLOSET</text>
+          <text x="450" y="690" fill="#ffffff" font-family="Arial,sans-serif" font-size="21" text-anchor="middle">${escapeXML(title)}</text>
+          <text x="450" y="1090" fill="#ffffff" font-family="Arial,sans-serif" font-size="14" letter-spacing="3" text-anchor="middle">IMAGE NOT AVAILABLE / YOUR VISION STARTS HERE</text>
+        </svg>`;
+      return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+    }
+
+    function setProductImage(image, src, title) {
+      image.alt = title;
+      image.classList.remove("is-loaded");
+      image.onload = () => image.classList.add("is-loaded");
+      image.onerror = () => {
+        image.onerror = null;
+        image.src = fallbackGraphic(title);
+      };
+      image.src = src;
+      if (image.complete && image.naturalWidth) image.classList.add("is-loaded");
+    }
+
+    setProductImage($("#hero-image"), HERO_IMAGE, "Make Your Own Outfit");
+
+    function genderLabel(gender) {
+      return gender === "all" ? "All genders" : gender;
+    }
+
+    function matchesPrice(price) {
+      if (filters.price === "all") return true;
+      const [direction, amount] = filters.price.split("-");
+      return direction === "under"
+        ? price < Number(amount)
+        : price >= Number(amount);
+    }
+
+    function getMatchingProducts() {
+      return products.filter(product => {
+        // Shared/all-gender pieces are valid in either gender pillar.
+        const genderMatches =
+          filters.gender === "all" ||
+          product.gender === filters.gender ||
+          product.gender === "all";
+
+        return genderMatches &&
+          (filters.style === "all" || product.style === filters.style) &&
+          matchesPrice(product.price);
+      });
+    }
+
+    function createProductCard(product) {
+      const article = document.createElement("article");
+      article.className = "product-card";
+
+      const button = document.createElement("button");
+      button.className = "product-open";
+      button.type = "button";
+      button.dataset.productId = product.id;
+      button.setAttribute("aria-label", `Customize ${product.title}, from ${money(product.price)}`);
+
+      button.innerHTML = `
+        <div class="product-media">
+          <img loading="lazy" decoding="async" width="900" height="1200">
+          <span class="product-label"></span>
+          <span class="product-action">Make it your own &#8599;</span>
+        </div>
+        <div class="product-info">
+          <p class="product-category"></p>
+          <h3></h3>
+          <div class="product-price">
+            <span></span>
+            <small>Base price</small>
+          </div>
+        </div>
+      `;
+
+      setProductImage(button.querySelector("img"), product.image, product.title);
+      button.querySelector(".product-label").textContent = product.style;
+      button.querySelector(".product-category").textContent =
+        `${genderLabel(product.gender)} / ${product.style}`;
+      button.querySelector("h3").textContent = product.title;
+      button.querySelector(".product-price span").textContent = money(product.price);
+
+      article.append(button);
+      return article;
+    }
+
+    function updatePagination() {
+      const remaining = matchingProducts.length - displayedCount;
+      $("#collection-count").textContent =
+        `${matchingProducts.length} pieces / ${displayedCount} displayed`;
+      $("#load-more").hidden = remaining === 0;
+      $("#pagination-status").textContent =
+        matchingProducts.length === 0 ? "" :
+          remaining === 0 ? "You have explored every piece in this selection." :
+            `${remaining} more pieces. Keep scrolling to explore.`;
+    }
+
+    function appendNextPage() {
+      if (displayedCount >= matchingProducts.length) return;
+
+      const grid = $("#product-grid");
+      grid.setAttribute("aria-busy", "true");
+      const fragment = document.createDocumentFragment();
+      const next = matchingProducts.slice(displayedCount, displayedCount + PAGE_SIZE);
+      next.forEach(product => fragment.append(createProductCard(product)));
+      grid.append(fragment);
+      displayedCount += next.length;
+      grid.setAttribute("aria-busy", "false");
+      updatePagination();
+      recheckSentinel();
+    }
+
+    function applyFilters() {
+      matchingProducts = getMatchingProducts();
+      displayedCount = 0;
+      $("#product-grid").replaceChildren();
+      $("#empty-state").hidden = matchingProducts.length !== 0;
+
+      $$("[data-gender]").forEach(button =>
+        button.setAttribute("aria-pressed", String(button.dataset.gender === filters.gender))
+      );
+
+      $$("[data-style]").forEach(button =>
+        button.setAttribute("aria-pressed", String(button.dataset.style === filters.style))
+      );
+
+      $(".style-filters").setAttribute("aria-label", `Style within ${filters.gender}`);
+      appendNextPage();
+      updatePagination();
+    }
+
+    $$("[data-gender]").forEach(button => {
+      button.addEventListener("click", () => {
+        filters.gender = button.dataset.gender;
+        applyFilters();
+      });
+    });
+
+    $$("[data-style]").forEach(button => {
+      button.addEventListener("click", () => {
+        filters.style = button.dataset.style;
+        applyFilters();
+      });
+    });
+
+    $("#price-filter").addEventListener("change", event => {
+      filters.price = event.target.value;
+      applyFilters();
+    });
+
+    $("#reset-filters").addEventListener("click", () => {
+      Object.assign(filters, { gender: "all", style: "all", price: "all" });
+      $("#price-filter").value = "all";
+      applyFilters();
+    });
+
+    $("#load-more").addEventListener("click", appendNextPage);
+
+    let sentinelObserver = null;
+    if ("IntersectionObserver" in window) {
+      sentinelObserver = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) appendNextPage();
+      }, { rootMargin: "500px 0px", threshold: 0 });
+
+      sentinelObserver.observe($("#scroll-sentinel"));
+    }
+
+    // The visible Load more button is also a keyboard and older-browser fallback.
+    applyFilters();
+
+    function renderFabrics() {
+      const container = $("#fabric-options");
+      container.replaceChildren();
+
+      fabricChoices.forEach(fabric => {
+        const label = document.createElement("label");
+        label.className = "fabric-option";
+
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "fabric";
+        input.value = fabric.id;
+        input.checked = activeFabric.id === fabric.id;
+
+        const text = document.createElement("span");
+        text.textContent = fabric.name;
+        const multiplier = document.createElement("small");
+        multiplier.textContent = `${fabric.multiplier.toFixed(2)}x \u00b7 ${money(Math.round(activeProduct.price * fabric.multiplier))}`;
+        text.append(multiplier);
+        label.append(input, text);
+        container.append(label);
+      });
+    }
+
+    function revokeReferences() {
+      references.forEach(reference => URL.revokeObjectURL(reference.url));
+      references = [];
+    }
+
+    function setProcessing(value) {
+      processing = value;
+      $("#synthesize-button").disabled = value;
+      $("#upload-zone").disabled = value;
+      $("#reference-input").disabled = value;
+      $("#fabric-fieldset").disabled = value;
+      $$(".remove-reference").forEach(button => button.disabled = value);
+      $(".ai-engine").setAttribute("aria-busy", String(value));
+      $("#synthesize-button span").textContent =
+        value ? "Synthesis in progress..." : "Synthesize Custom Outfit";
+    }
+
+    function invalidateResult() {
+      $("#price-breakdown").hidden = true;
+      $("#engine-status").hidden = true;
+      $("#modal-image").classList.remove("synthesized");
+      $("#image-status-title").textContent = "Original silhouette";
+      $("#image-status-description").textContent =
+        "A foundation for your own expression.";
+      if (activeProduct) {
+        setProductImage($("#modal-image"), activeProduct.image, activeProduct.title);
+      }
+      updateLivePrice();
+    }
+
+    function referenceImageFee(selectedPrice) {
+      return Math.round(selectedPrice * REFERENCE_IMAGE_RATE);
+    }
+
+    async function checkAIService() {
+      const status = $("#ai-status-tag");
+      try {
+        const response = await fetch("/api/health");
+        const health = await response.json();
+        status.textContent = health.configured ? "LIVE / OPENAI" : "ADD OPENAI KEY";
+      } catch {
+        status.textContent = "START AI SERVER";
+      }
+    }
+    checkAIService();
+
+    async function requestOutfitImage({ imagePath, title, fabric, references, designBrief = "", signal }) {
+      const productResponse = await fetch(imagePath, { signal });
+      if (!productResponse.ok) throw new Error("Could not load the selected product image.");
+      const productImage = await productResponse.blob();
+      const formData = new FormData();
+      formData.append("productImage", productImage, imagePath.split("/").pop());
+      formData.append("productTitle", title);
+      formData.append("fabric", fabric);
+      formData.append("designBrief", designBrief);
+      references.forEach(reference =>
+        formData.append("references", reference.file, reference.file.name)
+      );
+
+      const response = await fetch("/api/synthesize", {
+        method: "POST",
+        body: formData,
+        signal
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || `Image generation failed (${response.status}).`);
+      if (!result.image) throw new Error("The image service returned no generated image.");
+      return result;
+    }
+
+    function openProduct(product, trigger) {
+      if ($("#product-dialog").open) return;
+      activeProduct = product;
+      activeFabric = fabricChoices[1];
+      opener = trigger;
+
+      revokeReferences();
+      renderReferences();
+      renderFabrics();
+      setProcessing(false);
+      $("#live-total").dataset.v = 0;
+      invalidateResult();
+
+      $("#upload-error").hidden = true;
+      $("#reference-input").value = "";
+      $("#modal-title").textContent = product.title;
+      $("#modal-category").textContent =
+        `${genderLabel(product.gender)} / ${product.style} / Custom foundation`;
+      $("#modal-description").textContent =
+        "Begin with this silhouette, choose your fabric, and add your own references. " +
+        "Explore a personal interpretation with a transparent custom-price estimate.";
+      $("#modal-base-price").textContent = money(product.price);
+      setProductImage($("#modal-image"), product.image, product.title);
+
+      document.body.classList.add("modal-open");
+      $("#product-dialog").showModal();
+      $("#product-dialog").scrollTop = 0;
+      $("#close-dialog").focus();
+    }
+
+    $("#product-grid").addEventListener("click", event => {
+      const button = event.target.closest("[data-product-id]");
+      if (!button) return;
+      const product = products.find(item => item.id === button.dataset.productId);
+      if (product) openProduct(product, button);
+    });
+
+    $("#close-dialog").addEventListener("click", closeDialog);
+
+    $("#product-dialog").addEventListener("close", () => {
+      clearLog();
+      synthesisController?.abort();
+      synthesisController = null;
+      setProcessing(false);
+      revokeReferences();
+      renderReferences();
+      $("#reference-input").value = "";
+      $("#upload-zone").classList.remove("dragging");
+      activeProduct = null;
+      document.body.classList.remove("modal-open");
+      if (opener?.isConnected) opener.focus();
+      opener = null;
+      if (openCartAfterProductClose) {
+        openCartAfterProductClose = false;
+        openCart();
+      }
+    });
+
+    // Native dialog provides modal semantics and Escape handling.
+    // Explicit focus wrap also keeps keyboard navigation in the overlay.
+    $("#product-dialog").addEventListener("keydown", event => {
+      if (event.key !== "Tab") return;
+      const focusable = [...event.currentTarget.querySelectorAll(
+        'button, input, select, a[href], [tabindex="0"]'
+      )].filter(element =>
+        !element.matches(":disabled") &&
+        !element.closest("[hidden]") &&
+        element.getClientRects().length > 0
+      );
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    });
+
+    $("#fabric-options").addEventListener("change", event => {
+      if (processing || event.target.name !== "fabric") return;
+      activeFabric = fabricChoices.find(fabric => fabric.id === event.target.value);
+      invalidateResult();
+    });
+
+    function renderReferences() {
+      const container = $("#reference-grid");
+      container.replaceChildren();
+
+      references.forEach(reference => {
+        const item = document.createElement("div");
+        item.className = "reference-item" + (reference.id > shownReferenceId ? " is-new" : "");
+
+        const image = document.createElement("img");
+        image.src = reference.url;
+        image.alt = `Reference: ${reference.file.name}`;
+
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "remove-reference";
+        remove.textContent = "\u00d7";
+        remove.disabled = processing;
+        remove.setAttribute("aria-label", `Remove ${reference.file.name}`);
+
+        remove.addEventListener("click", () => {
+          if (processing) return;
+          const index = references.findIndex(item => item.id === reference.id);
+          if (index === -1) return;
+          URL.revokeObjectURL(references[index].url);
+          references.splice(index, 1);
+          invalidateResult();
+          renderReferences();
+          $("#upload-zone").focus();
+        });
+
+        item.append(image, remove);
+        container.append(item);
+      });
+      shownReferenceId = nextReferenceId;
+    }
+
+    function addReferences(files) {
+      if (processing || !activeProduct) return;
+      const errors = [];
+      let added = false;
+
+      for (const file of files) {
+        if (!allowedTypes.has(file.type)) {
+          errors.push(`${file.name}: use JPG, PNG or WebP.`);
+          continue;
+        }
+        if (!file.size || file.size > MAX_FILE_SIZE) {
+          errors.push(`${file.name}: select a non-empty image of 10 MB or less.`);
+          continue;
+        }
+        if (references.length >= MAX_IMAGES) {
+          errors.push(`A maximum of ${MAX_IMAGES} references is allowed.`);
+          break;
+        }
+
+        const duplicate = references.some(reference =>
+          reference.file.name === file.name &&
+          reference.file.size === file.size &&
+          reference.file.lastModified === file.lastModified
+        );
+
+        if (duplicate) {
+          errors.push(`${file.name}: already added.`);
+          continue;
+        }
+
+        references.push({
+          id: ++nextReferenceId,
+          file,
+          url: URL.createObjectURL(file)
+        });
+        added = true;
+      }
+
+      $("#upload-error").textContent = errors.join(" ");
+      $("#upload-error").hidden = errors.length === 0;
+
+      if (added) {
+        invalidateResult();
+        renderReferences();
+      }
+    }
+
+    $("#upload-zone").addEventListener("click", () => $("#reference-input").click());
+
+    $("#reference-input").addEventListener("change", event => {
+      addReferences([...event.target.files]);
+      event.target.value = "";
+    });
+
+    let dragDepth = 0;
+
+    $("#upload-zone").addEventListener("dragenter", event => {
+      event.preventDefault();
+      if (processing) return;
+      dragDepth++;
+      $("#upload-zone").classList.add("dragging");
+    });
+
+    $("#upload-zone").addEventListener("dragover", event => {
+      event.preventDefault();
+      event.dataTransfer.dropEffect = processing ? "none" : "copy";
+    });
+
+    $("#upload-zone").addEventListener("dragleave", event => {
+      event.preventDefault();
+      dragDepth = Math.max(0, dragDepth - 1);
+      if (!dragDepth) $("#upload-zone").classList.remove("dragging");
+    });
+
+    $("#upload-zone").addEventListener("drop", event => {
+      event.preventDefault();
+      dragDepth = 0;
+      $("#upload-zone").classList.remove("dragging");
+      addReferences([...event.dataTransfer.files]);
+    });
+
+    // Avoid accidentally navigating away when a file misses the drop zone.
+    ["dragover", "drop"].forEach(type => {
+      $("#product-dialog").addEventListener(type, event => {
+        if ([...event.dataTransfer.types].includes("Files")) event.preventDefault();
+      });
+    });
+
+    function displayPriceBreakdown(product, fabric, referenceCount) {
+      // Round to the nearest rupee only after applying the multiplier.
+      const basePrice = Math.round(product.price * fabric.multiplier);
+      const perImageFee = referenceImageFee(basePrice);
+      const imageFee = referenceCount * perImageFee;
+      const total = basePrice + imageFee;
+
+      $("#breakdown-original").textContent = money(product.price);
+      $("#breakdown-fabric-label").textContent =
+        `${fabric.name} (${fabric.multiplier.toFixed(2)}x) / adjusted base`;
+      $("#breakdown-base").textContent = money(basePrice);
+      $("#breakdown-fee-label").textContent =
+        `AI image inputs (${referenceCount} x ${money(perImageFee)}; 1% each)`;
+      $("#breakdown-fee").textContent = money(imageFee);
+      $("#breakdown-total").dataset.v = 0;
+      countUp($("#breakdown-total"), total);
+      $("#price-breakdown").hidden = false;
+    }
+
+    $("#synthesize-button").addEventListener("click", async () => {
+      if (processing || !activeProduct) return;
+
+      // Snapshot the inputs for this run. Controls remain locked until done.
+      const product = activeProduct;
+      const fabric = activeFabric;
+      const selectedReferences = [...references];
+      const referenceCount = selectedReferences.length;
+      const controller = new AbortController();
+      synthesisController = controller;
+
+      setProcessing(true);
+      $("#price-breakdown").hidden = true;
+      $("#modal-image").classList.remove("synthesized");
+      $("#image-status-title").textContent = "Generating your outfit";
+      $("#image-status-description").textContent = "Sending the product and your references to the image model.";
+      $("#engine-status").hidden = false;
+      $("#engine-status").textContent =
+        `Sending the selected product and ${referenceCount} reference image${referenceCount === 1 ? "" : "s"}...\n` +
+        `Selected fabric: ${fabric.name}. The image model is generating your preview.`;
+
+      try {
+        const result = await requestOutfitImage({
+          imagePath: product.image,
+          title: product.title,
+          fabric: fabric.name,
+          references: selectedReferences,
+          signal: controller.signal
+        });
+        if (!$("#product-dialog").open || activeProduct?.id !== product.id) return;
+
+        clearLog();
+        $("#modal-image").src = result.image;
+        $("#modal-image").alt = `AI-generated ${product.title} using your reference images`;
+        $("#modal-image").classList.add("is-loaded", "synthesized");
+        $("#image-status-title").textContent = "AI-generated result";
+        $("#image-status-description").textContent =
+          "Your selected product has been edited using your reference images.";
+        $("#engine-status").textContent =
+          `GENERATION COMPLETE / ${result.model || "OPENAI IMAGE MODEL"}\n` +
+          `${referenceCount} reference image${referenceCount === 1 ? "" : "s"} included in the result and estimate.`;
+        displayPriceBreakdown(product, fabric, referenceCount);
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          $("#engine-status").textContent = `GENERATION FAILED / ${error.message}`;
+          $("#image-status-title").textContent = "Generation unavailable";
+          $("#image-status-description").textContent =
+            "Check the AI server and API key, then try again.";
+        }
+      } finally {
+        if (synthesisController === controller) synthesisController = null;
+        if ($("#product-dialog").open && activeProduct?.id === product.id) setProcessing(false);
+      }
+    });
+
+    window.addEventListener("pagehide", () => {
+      synthesisController?.abort();
+      studioController?.abort();
+      revokeReferences();
+    });
+    /* ===== Polish layer: motion, live price, safer infinite scroll ===== */
+    const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+
+    // An IntersectionObserver only fires on change. If the sentinel is still near
+    // the viewport after a page is appended (tall screens, short filtered lists),
+    // nothing would fire again. Re-observing forces a fresh check.
+    function recheckSentinel() {
+      if (!sentinelObserver || displayedCount >= matchingProducts.length) return;
+      const sentinel = $("#scroll-sentinel");
+      requestAnimationFrame(() => {
+        sentinelObserver.unobserve(sentinel);
+        sentinelObserver.observe(sentinel);
+      });
+    }
+
+    function countUp(el, to, ms = 900) {
+      const from = Number(el.dataset.v || 0);
+      const run = (el._run = (el._run || 0) + 1);
+      el.dataset.v = to;
+      if (reduceMotion.matches || from === to) { el.textContent = money(to); return; }
+      el.textContent = money(from);
+      const start = performance.now();
+      const tick = now => {
+        if (el._run !== run) return;
+        const p = Math.min(1, (now - start) / ms);
+        el.textContent = money(Math.round(from + (to - from) * (1 - Math.pow(1 - p, 4))));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+
+    function updateLivePrice() {
+      if (!activeProduct) return;
+      const base = Math.round(activeProduct.price * activeFabric.multiplier);
+      const perImageFee = referenceImageFee(base);
+      const fee = references.length * perImageFee;
+      countUp($("#live-total"), base + fee, 600);
+      $("#live-formula").textContent =
+        `${money(activeProduct.price)} \u00d7 ${activeFabric.name} (${activeFabric.multiplier.toFixed(2)}x)` +
+        (fee ? ` + ${references.length} \u00d7 ${money(perImageFee)} AI image input (1% each)` : "");
+    }
+
+    let logTimers = [];
+    function clearLog() { logTimers.forEach(clearTimeout); logTimers = []; }
+    function streamLog(lines) {
+      clearLog();
+      const box = $("#engine-status");
+      box.textContent = "";
+      lines.forEach((line, i) => logTimers.push(setTimeout(() => {
+        box.textContent += (i ? "\n" : "") + line;
+      }, i * 650)));
+    }
+
+    function closeDialog() {
+      const dialog = $("#product-dialog");
+      if (!dialog.open || dialog.classList.contains("closing")) return;
+      if (reduceMotion.matches) { dialog.close(); return; }
+      dialog.classList.add("closing");
+      let done = false;
+      const onEnd = event => { if (event.target === dialog) finish(); };
+      const finish = () => {
+        if (done) return;
+        done = true;
+        dialog.removeEventListener("animationend", onEnd);
+        dialog.classList.remove("closing");
+        dialog.close();
+      };
+      dialog.addEventListener("animationend", onEnd);
+      setTimeout(finish, 450);
+    }
+
+    // Escape also slides the dialog away instead of cutting it.
+    $("#product-dialog").addEventListener("cancel", event => {
+      event.preventDefault();
+      closeDialog();
+    });
+
+    [...$(".dialog-details").children].forEach((el, i) => el.style.setProperty("--k", i));
+
+    const revealObserver = "IntersectionObserver" in window
+      ? new IntersectionObserver(entries => entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("in");
+        revealObserver.unobserve(entry.target);
+      }), { threshold: 0.1, rootMargin: "0px 0px -5% 0px" })
+      : null;
+
+    function watch(el) {
+      if (revealObserver) revealObserver.observe(el); else el.classList.add("in");
+    }
+
+    $$(".collection-heading > *, .craft-intro > *, .craft-step, .manifesto > *").forEach(el => {
+      el.classList.add("reveal");
+      el.style.setProperty("--d", [...el.parentElement.children].indexOf(el) * 110 + "ms");
+      watch(el);
+    });
+
+    // Every batch of cards (first load, filters, endless scroll) staggers in by column.
+    const productGrid = $("#product-grid");
+    function watchCards(nodes) {
+      const cols = getComputedStyle(productGrid).gridTemplateColumns.split(" ").length || 4;
+      nodes.forEach((node, i) => {
+        if (node.nodeType !== 1) return;
+        node.style.setProperty("--col", i % cols);
+        watch(node);
+      });
+    }
+    watchCards([...productGrid.children]);
+    new MutationObserver(records =>
+      records.forEach(record => watchCards([...record.addedNodes]))
+    ).observe(productGrid, { childList: true });
+
+    /* MYOO Studio generation uses the same server-side image API as product customization. */
+    const studioState = {
+      basePrice: 24500,
+      fabric: "silk",
+      references: [],
+      generated: false,
+      title: "The Maroon Heirloom",
+      direction: "Choose a prompt and let the studio create a custom direction.",
+      image: "Zardozi Maroon Lehenga.jpg",
+      selectedMaker: null
+    };
+    const fabricRates = {
+      silk: { name: "Pure Silk", multiplier: 1 },
+      organza: { name: "Organza", multiplier: 1.15 },
+      velvet: { name: "Velvet", multiplier: 1.3 },
+      handloom: { name: "Handloom Banarasi", multiplier: 1.55 }
+    };
+    const studioLooks = [
+      { test: /sherwani|groom|ivory|bandhgala/i, title: "The Ivory Ceremony", image: "Royal Ivory Silk Sherwani.jpg", base: 38500, copy: "A ceremonial silhouette with clean architecture and hand-finished detail." },
+      { test: /blue|midnight|indo|jacket|fusion/i, title: "The Midnight Edit", image: "Indo-Western Jacket Set.jpg", base: 29800, copy: "A sharp Indo-western jacket story built for a late-evening entrance." },
+      { test: /saree|drape|chanderi/i, title: "The Modern Drape", image: "Chanderi Silk Saree.jpg", base: 26500, copy: "A fluid, tailored drape with a clean contemporary line." },
+      { test: /anarkali|velvet|winter/i, title: "The Velvet Hour", image: "Velvet Embroidered Anarkali.jpg", base: 31200, copy: "An embroidered Anarkali direction with plush depth and quiet drama." },
+      { test: /pink|pastel|rajasthani|lehenga|mirror/i, title: "The Pastel Heirloom", image: "Pastel Floral Lehenga.jpg", base: 34200, copy: "A celebratory lehenga direction balancing old-world craft and a modern blouse." },
+      { test: /.*/, title: "The Maroon Heirloom", image: "Zardozi Maroon Lehenga.jpg", base: 24500, copy: "A rich custom occasionwear direction rooted in hand-crafted detail." }
+    ];
+    const studioSurprises = [
+      "A jade green velvet sharara with antique gold embroidery for an intimate mehendi",
+      "An ivory silk sherwani with architectural embroidery for a twilight wedding",
+      "A midnight blue Indo-western co-ord with hand-drawn floral motifs",
+      "A rose-gold lehenga with a high-neck blouse and delicate mirror work"
+    ];
+    let studioController = null;
+    let personPreviewUrl = "";
+    let outfitPreviewUrl = "";
+    let arStream = null;
+
+    function studioGarmentPrice() {
+      const fabric = fabricRates[studioState.fabric];
+      const additions = [...document.querySelectorAll(".addon input:checked")]
+        .reduce((sum, input) => sum + Number(input.dataset.price || 0), 0);
+      return Math.round(studioState.basePrice * fabric.multiplier) + additions;
+    }
+
+    function studioTotal() {
+      const selectedPrice = studioGarmentPrice();
+      return selectedPrice +
+        studioState.references.length * referenceImageFee(selectedPrice);
+    }
+
+    function updateStudioPrice() {
+      const fabric = fabricRates[studioState.fabric];
+      const additions = [...document.querySelectorAll(".addon input:checked")]
+        .reduce((sum, input) => sum + Number(input.dataset.price || 0), 0);
+      const selectedPrice = studioGarmentPrice();
+      const referenceFee = studioState.references.length * referenceImageFee(selectedPrice);
+      $("#studio-total").textContent = money(studioTotal());
+      $("#studio-formula").textContent =
+        `Base ${money(studioState.basePrice)} × ${fabric.name} (${fabric.multiplier.toFixed(2)}x)` +
+        (referenceFee ? ` + ${studioState.references.length} reference${studioState.references.length === 1 ? "" : "s"} (1% each / ${money(referenceFee)})` : "") +
+        (additions ? ` + custom details (${money(additions)})` : "");
+    }
+
+    function updateStudioDirection() {
+      const designBits = [
+        $("#neckline-select").value,
+        $("#sleeve-select").value,
+        $("#silhouette-select").value,
+        fabricRates[studioState.fabric].name
+      ];
+      $("#preview-description").textContent = `${studioState.direction} Selected: ${designBits.join(" / ")}.`;
+    }
+
+    function renderStudioReferences() {
+      const grid = $("#studio-reference-grid");
+      grid.replaceChildren();
+      studioState.references.forEach((reference, index) => {
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "reference-item studio-reference-remove";
+        remove.disabled = Boolean(studioController);
+        remove.title = `Remove reference ${index + 1}`;
+        const image = document.createElement("img");
+        image.src = reference.url;
+        image.alt = `Studio motif reference ${index + 1}`;
+        remove.append(image);
+        remove.addEventListener("click", () => {
+          URL.revokeObjectURL(reference.url);
+          studioState.references.splice(index, 1);
+          renderStudioReferences();
+          updateStudioPrice();
+        });
+        grid.append(remove);
+      });
+    }
+
+    function addStudioReferences(files) {
+      if (studioController) return;
+      const valid = [...files].filter(file =>
+        /image\/(jpeg|png|webp)/.test(file.type) && file.size > 0 && file.size <= MAX_FILE_SIZE
+      );
+      valid.slice(0, Math.max(0, 5 - studioState.references.length)).forEach(file => {
+        studioState.references.push({ file, url: URL.createObjectURL(file) });
+      });
+      renderStudioReferences();
+      updateStudioPrice();
+      $("#studio-log").textContent = valid.length
+        ? `REFERENCE CACHE UPDATED / ${studioState.references.length} motif input${studioState.references.length === 1 ? "" : "s"} ready.`
+        : "REFERENCE REJECTED / Use image files smaller than 10 MB.";
+    }
+
+    function bindReferenceDrop(drop, input, callback) {
+      drop.addEventListener("click", () => input.click());
+      input.addEventListener("change", event => {
+        callback(event.target.files);
+        input.value = "";
+      });
+      ["dragenter", "dragover"].forEach(type => drop.addEventListener(type, event => {
+        event.preventDefault();
+        drop.classList.add("dragging");
+      }));
+      ["dragleave", "drop"].forEach(type => drop.addEventListener(type, event => {
+        event.preventDefault();
+        drop.classList.remove("dragging");
+        if (type === "drop") callback(event.dataTransfer.files);
+      }));
+    }
+
+    function resolveStudioLook(prompt) {
+      return studioLooks.find(look => look.test.test(prompt)) || studioLooks.at(-1);
+    }
+
+    async function generateStudioOutfit() {
+      if (studioController) return;
+      const idea = $("#idea-input").value.trim() || studioSurprises[Math.floor(Math.random() * studioSurprises.length)];
+      if (!$("#idea-input").value.trim()) $("#idea-input").value = idea;
+      const button = $("#generate-outfit");
+      const look = resolveStudioLook(idea);
+      const selectedReferences = [...studioState.references];
+      const fabric = fabricRates[studioState.fabric];
+      const designBrief = [
+        idea,
+        `Neckline: ${$("#neckline-select").value}`,
+        `Sleeve: ${$("#sleeve-select").value}`,
+        `Silhouette: ${$("#silhouette-select").value}`
+      ].join(". ");
+      const controller = new AbortController();
+      studioController = controller;
+      button.disabled = true;
+      button.querySelector("span").textContent = "Synthesizing your MYOO...";
+      $("#idea-input").disabled = true;
+      $("#surprise-button").disabled = true;
+      $("#studio-reference-drop").disabled = true;
+      $("#studio-reference-input").disabled = true;
+      $("#customizer").inert = true;
+      $("#prompt-chips").querySelectorAll("button").forEach(chip => chip.disabled = true);
+      renderStudioReferences();
+      $("#studio-log").textContent = "SENDING DESIGN BRIEF + GARMENT IMAGE TO THE AI IMAGE MODEL...";
+
+      try {
+        const result = await requestOutfitImage({
+          imagePath: look.image,
+          title: look.title,
+          fabric: fabric.name,
+          references: selectedReferences,
+          designBrief,
+          signal: controller.signal
+        });
+        Object.assign(studioState, {
+          generated: true,
+          title: look.title,
+          direction: idea,
+          image: result.image,
+          basePrice: look.base
+        });
+        $("#studio-preview-image").src = result.image;
+        $("#studio-preview-image").alt = `AI-generated ${look.title} outfit concept`;
+        $("#studio-preview").classList.add("is-generated");
+        $("#preview-stamp").textContent = "AI image generated / 001";
+        $("#preview-name").textContent = look.title;
+        $("#customizer").hidden = false;
+        updateStudioDirection();
+        updateStudioPrice();
+        setTryonImage("outfit", result.image, false);
+        $("#studio-log").textContent = `COMPLETE / AI IMAGE GENERATED WITH ${result.model || "OPENAI IMAGE MODEL"}.`;
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          $("#studio-log").textContent = `GENERATION FAILED / ${error.message}`;
+        }
+      } finally {
+        if (studioController === controller) studioController = null;
+        $("#idea-input").disabled = false;
+        $("#surprise-button").disabled = false;
+        $("#studio-reference-drop").disabled = false;
+        $("#studio-reference-input").disabled = false;
+        $("#customizer").inert = false;
+        $("#prompt-chips").querySelectorAll("button").forEach(chip => chip.disabled = false);
+        renderStudioReferences();
+        button.disabled = false;
+        button.querySelector("span").textContent = studioState.generated
+          ? "Re-synthesize custom outfit"
+          : "Synthesize custom outfit";
+      }
+    }
+
+    $("#prompt-chips").addEventListener("click", event => {
+      const chip = event.target.closest("[data-prompt]");
+      if (chip) $("#idea-input").value = chip.dataset.prompt;
+    });
+    $("#surprise-button").addEventListener("click", () => {
+      $("#idea-input").value = studioSurprises[Math.floor(Math.random() * studioSurprises.length)];
+      $("#idea-input").focus();
+    });
+    $("#generate-outfit").addEventListener("click", generateStudioOutfit);
+    bindReferenceDrop($("#studio-reference-drop"), $("#studio-reference-input"), addStudioReferences);
+    ["#neckline-select", "#sleeve-select", "#silhouette-select"].forEach(selector =>
+      $(selector).addEventListener("change", updateStudioDirection)
+    );
+    $("#studio-fabric-select").addEventListener("change", event => {
+      studioState.fabric = event.target.value;
+      updateStudioDirection();
+      updateStudioPrice();
+    });
+    document.querySelectorAll(".addon input").forEach(input => input.addEventListener("change", updateStudioPrice));
+
+    function setTryonImage(kind, source, revokable = true) {
+      const drop = kind === "person" ? $("#person-drop") : $("#outfit-drop");
+      const old = kind === "person" ? personPreviewUrl : outfitPreviewUrl;
+      if (old && old.startsWith("blob:") && old !== source) URL.revokeObjectURL(old);
+      const image = drop.querySelector("img") || document.createElement("img");
+      image.src = source;
+      image.alt = kind === "person" ? "Your selected photo" : "Your selected outfit";
+      if (!image.parentElement) drop.prepend(image);
+      if (kind === "person") personPreviewUrl = source;
+      else outfitPreviewUrl = source;
+      updateTryonReadiness();
+    }
+
+    function handleTryonFile(kind, files) {
+      const file = [...files][0];
+      if (!file || !/image\/(jpeg|png|webp|avif)/.test(file.type)) {
+        $("#tryon-stage").textContent = "FILE REJECTED / Choose a JPG, PNG, WebP or AVIF image.";
+        return;
+      }
+      setTryonImage(kind, URL.createObjectURL(file));
+      $("#tryon-stage").textContent = `${kind === "person" ? "PORTRAIT" : "GARMENT"} READY / Add the other image to start.`;
+    }
+
+    function updateTryonReadiness() {
+      $("#process-tryon").disabled = !(personPreviewUrl && outfitPreviewUrl);
+    }
+
+    bindReferenceDrop($("#person-drop"), $("#person-input"), files => handleTryonFile("person", files));
+    bindReferenceDrop($("#outfit-drop"), $("#outfit-input"), files => handleTryonFile("outfit", files));
+    $("#use-studio-outfit").addEventListener("click", () => {
+      setTryonImage("outfit", studioState.image, false);
+      $("#tryon-stage").textContent = "STUDIO CONCEPT READY / Add your clear photo to continue.";
+    });
+
+    function runTryonPreview() {
+      if (!personPreviewUrl || !outfitPreviewUrl) return;
+      const button = $("#process-tryon");
+      const stages = [
+        "01/03  DETECTING PERSON + GARMENT...",
+        "02/03  PRESERVING IDENTITY, PROPORTIONS + BACKGROUND...",
+        "03/03  APPLYING OUTFIT + FABRIC OCCLUSION..."
+      ];
+      let index = 0;
+      button.disabled = true;
+      button.firstChild.textContent = "Processing try-on ";
+      $("#tryon-stage").textContent = stages[index];
+      const timer = setInterval(() => {
+        index++;
+        if (index < stages.length) {
+          $("#tryon-stage").textContent = stages[index];
+          return;
+        }
+        clearInterval(timer);
+        $("#before-image").src = personPreviewUrl;
+        $("#after-image").src = personPreviewUrl;
+        $("#comparison-after").style.backgroundImage =
+          `linear-gradient(rgba(58,16,26,.18), rgba(58,16,26,.18)), url("${outfitPreviewUrl}")`;
+        $("#comparison").hidden = false;
+        $("#result-empty").hidden = true;
+        $("#compare-slider").hidden = false;
+        $("#download-result").hidden = false;
+        $("#tryon-result-copy").textContent = "Interactive before / after concept preview. Wire your chosen VTO API to replace this local treatment with a photorealistic result.";
+        $("#tryon-stage").textContent = "COMPLETE / LOCAL CONCEPT PREVIEW READY. NO IMAGE WAS SENT TO A SERVER.";
+        button.disabled = false;
+        button.firstChild.textContent = "Re-run virtual try-on ";
+        updateCompareSlider();
+      }, 760);
+    }
+
+    function updateCompareSlider() {
+      const value = Math.max(1, Number($("#compare-slider").value));
+      $("#comparison-after").style.width = `${value}%`;
+      $("#after-image").style.width = `${10000 / value}%`;
+    }
+
+    $("#process-tryon").addEventListener("click", runTryonPreview);
+    $("#compare-slider").addEventListener("input", updateCompareSlider);
+    $("#download-result").addEventListener("click", () => {
+      const image = $("#after-image");
+      const canvas = document.createElement("canvas");
+      canvas.width = image.naturalWidth || 1000;
+      canvas.height = image.naturalHeight || 1400;
+      const context = canvas.getContext("2d");
+      try {
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
+        context.fillStyle = "rgba(58,16,26,.34)";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = "#f4efea";
+        context.font = `${Math.max(20, canvas.width / 28)}px serif`;
+        context.fillText("MYOO / VIRTUAL TRY-ON CONCEPT", 30, canvas.height - 35);
+        const link = document.createElement("a");
+        link.href = canvas.toDataURL("image/png");
+        link.download = "myoo-virtual-tryon-concept.png";
+        link.click();
+      } catch {
+        $("#tryon-stage").textContent = "DOWNLOAD UNAVAILABLE / Your browser blocked canvas export for this image.";
+      }
+    });
+
+    document.querySelectorAll(".fit-tab").forEach(tab => tab.addEventListener("click", () => {
+      document.querySelectorAll(".fit-tab").forEach(button => button.setAttribute("aria-selected", String(button === tab)));
+      document.querySelectorAll(".fit-view").forEach(view => view.hidden = view.id !== tab.dataset.fitView);
+    }));
+    document.querySelectorAll(".size-button").forEach(button => button.addEventListener("click", () => {
+      document.querySelectorAll(".size-button").forEach(size => size.setAttribute("aria-pressed", String(size === button)));
+    }));
+    $("#start-ar").addEventListener("click", async () => {
+      const readout = $("#ar-readout");
+      if (!navigator.mediaDevices?.getUserMedia) {
+        readout.textContent = "CAMERA API UNAVAILABLE / Enter custom measurements instead.";
+        return;
+      }
+      try {
+        arStream?.getTracks().forEach(track => track.stop());
+        arStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: false });
+        $("#ar-video").srcObject = arStream;
+        $("#start-ar").textContent = "Camera enabled";
+        $("#start-ar").disabled = true;
+        readout.textContent = "LOCAL CAMERA READY\nSCANNING DEMO / body landmarks detected\nESTIMATE READY / Bust 88 cm · Waist 70 cm · Hip 96 cm";
+      } catch {
+        readout.textContent = "CAMERA PERMISSION NOT AVAILABLE / Use Standard or Custom Fit.";
+      }
+    });
+
+    const artisanPool = [
+      { initial: "M", name: "Meera Couture Studio", city: "Jaipur", rating: "4.9", skill: "Gota Patti · Bridal handwork", focus: "heritage" },
+      { initial: "A", name: "Aarav Tailors", city: "Delhi", rating: "4.8", skill: "Structured tailoring · Sherwani", focus: "silk" },
+      { initial: "R", name: "Rangrez Atelier", city: "Kolkata", rating: "4.9", skill: "Draping · Handloom textiles", focus: "handloom" },
+      { initial: "Z", name: "Zariya House", city: "Lucknow", rating: "4.7", skill: "Zari · Fine embroidery", focus: "velvet" },
+      { initial: "K", name: "Kavya Studio", city: "Mumbai", rating: "4.8", skill: "Modern fusion · Occasionwear", focus: "organza" }
+    ];
+
+    function renderMakers(makers) {
+      const grid = $("#makers-grid");
+      grid.replaceChildren();
+      makers.forEach(maker => {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "maker-card";
+        card.setAttribute("aria-pressed", "false");
+        card.innerHTML = `<span class="maker-mark">${maker.initial}</span><div><h4></h4><p></p></div><span class="maker-meta"></span>`;
+        card.querySelector("h4").textContent = maker.name;
+        card.querySelector("p").textContent = `${maker.city} · ★ ${maker.rating} · ${maker.skill}`;
+        card.querySelector(".maker-meta").textContent = "View match ↗";
+        card.addEventListener("click", () => {
+          studioState.selectedMaker = maker.name;
+          grid.querySelectorAll(".maker-card").forEach(item => item.setAttribute("aria-pressed", String(item === card)));
+          $("#maker-status").textContent = `KARIGAR SELECTED / ${maker.name.toUpperCase()} will review your MYOO brief before final production.`;
+        });
+        grid.append(card);
+      });
+    }
+
+    $("#match-makers").addEventListener("click", () => {
+      const status = $("#maker-status");
+      const button = $("#match-makers");
+      button.disabled = true;
+      status.textContent = "MATCH ENGINE / ANALYSING FABRIC · EMBELLISHMENT · FIT · BUDGET...";
+      setTimeout(() => {
+        const focused = artisanPool.filter(maker => maker.focus === studioState.fabric);
+        const selected = [...focused, ...artisanPool.filter(maker => maker.focus !== studioState.fabric)].slice(0, 3);
+        renderMakers(selected);
+        status.textContent = `MATCH COMPLETE / 3 ateliers suited to ${fabricRates[studioState.fabric].name}, ${money(studioTotal())}, and your current design brief.`;
+        button.disabled = false;
+      }, 950);
+    });
+
+    const VAULT_KEY = "myoo-wardrobe-v1";
+    function loadVault() {
+      try { return JSON.parse(localStorage.getItem(VAULT_KEY) || "[]"); }
+      catch { return []; }
+    }
+    function renderVault() {
+      const vault = loadVault();
+      const grid = $("#vault-grid");
+      grid.replaceChildren();
+      if (!vault.length) {
+        const empty = document.createElement("div");
+        empty.className = "vault-empty";
+        empty.innerHTML = "<div><h3>Your wardrobe begins here.</h3><p>Generate a MYOO direction, tune the construction, then save it as a persistent digital wardrobe card.</p></div>";
+        grid.append(empty);
+        return;
+      }
+      vault.forEach(item => {
+        const card = document.createElement("article");
+        card.className = "vault-card";
+        const image = document.createElement("img");
+        image.src = item.image;
+        image.alt = item.title;
+        const content = document.createElement("div");
+        const title = document.createElement("h3");
+        const meta = document.createElement("p");
+        title.textContent = item.title;
+        meta.textContent = `${item.fabric} / saved ${item.date}`;
+        content.append(title, meta);
+        card.append(image, content);
+        grid.append(card);
+      });
+    }
+
+    $("#save-vault").addEventListener("click", () => {
+      if (!studioState.generated) {
+        $("#studio-log").textContent = "SAVE PAUSED / Synthesize a custom outfit before adding it to your wardrobe.";
+        location.hash = "studio";
+        return;
+      }
+      const vault = loadVault();
+      vault.unshift({
+        id: `${Date.now()}`,
+        title: studioState.title,
+        image: studioState.image,
+        fabric: fabricRates[studioState.fabric].name,
+        date: new Intl.DateTimeFormat("en-IN", { day: "2-digit", month: "short", year: "numeric" }).format(new Date())
+      });
+      try {
+        localStorage.setItem(VAULT_KEY, JSON.stringify(vault.slice(0, 12)));
+        renderVault();
+        $("#save-vault").firstChild.textContent = "Saved to wardrobe ";
+      } catch {
+        $("#studio-log").textContent = "WARDROBE SAVE UNAVAILABLE / Browser storage is disabled.";
+      }
+    });
+
+    $("#footer-newsletter-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const email = $("#footer-email");
+      $("#newsletter-status").textContent = `THANK YOU / ${email.value} is on the MYOO list.`;
+      email.value = "";
+    });
+    renderVault();
+
+    function cartSubtotal() {
+      return cart.reduce((total, item) => total + item.price, 0);
+    }
+
+    function updateCartCount() {
+      $("#cart-count").textContent = String(cart.length);
+    }
+
+    function renderCart() {
+      const container = $("#cart-items");
+      container.replaceChildren();
+      $("#cart-empty").hidden = cart.length > 0;
+      cart.forEach(item => {
+        const row = document.createElement("article");
+        row.className = "cart-line";
+        const details = document.createElement("div");
+        const title = document.createElement("h3");
+        const meta = document.createElement("p");
+        title.textContent = item.title;
+        meta.textContent = `Fabric: ${item.fabric}`;
+        details.append(title, meta);
+        const price = document.createElement("span");
+        price.className = "cart-line-price";
+        price.textContent = money(item.price);
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "remove-cart-item";
+        remove.textContent = "Remove";
+        remove.setAttribute("aria-label", `Remove ${item.title} from cart`);
+        remove.addEventListener("click", () => {
+          const index = cart.findIndex(entry => entry.id === item.id);
+          if (index !== -1) cart.splice(index, 1);
+          updateCartCount();
+          renderCart();
+        });
+        row.append(details, price, remove);
+        container.append(row);
+      });
+      $("#cart-total").textContent = money(cartSubtotal());
+      $("#go-to-checkout").disabled = cart.length === 0;
+    }
+
+    function openCart() {
+      renderCart();
+      $("#cart-dialog").showModal();
+      document.body.classList.add("modal-open");
+    }
+
+    function openCheckout() {
+      if (!cart.length) return;
+      $("#checkout-total").textContent = money(cartSubtotal());
+      $("#checkout-dialog").showModal();
+      document.body.classList.add("modal-open");
+    }
+
+    $("#add-to-cart").addEventListener("click", () => {
+      if (!activeProduct) return;
+      cart.push({
+        id: ++nextCartId,
+        title: activeProduct.title,
+        fabric: activeFabric.name,
+        price: Math.round(activeProduct.price * activeFabric.multiplier) +
+          references.length * referenceImageFee(Math.round(activeProduct.price * activeFabric.multiplier))
+      });
+      updateCartCount();
+      openCartAfterProductClose = true;
+      closeDialog();
+    });
+
+    $("#open-cart").addEventListener("click", openCart);
+    $("#close-cart").addEventListener("click", () => $("#cart-dialog").close());
+    $("#continue-browsing").addEventListener("click", () => $("#cart-dialog").close());
+    $("#go-to-checkout").addEventListener("click", () => {
+      openCheckoutAfterCartClose = true;
+      $("#cart-dialog").close();
+    });
+    $("#cart-dialog").addEventListener("close", () => {
+      document.body.classList.remove("modal-open");
+      if (openCheckoutAfterCartClose) {
+        openCheckoutAfterCartClose = false;
+        openCheckout();
+      }
+    });
+    $("#close-checkout").addEventListener("click", () => $("#checkout-dialog").close());
+    $("#back-to-cart").addEventListener("click", () => {
+      openCartAfterCheckoutClose = true;
+      $("#checkout-dialog").close();
+    });
+    $("#checkout-dialog").addEventListener("close", () => {
+      document.body.classList.remove("modal-open");
+      if (openCartAfterCheckoutClose) {
+        openCartAfterCheckoutClose = false;
+        openCart();
+      }
+    });
+
+    $("#checkout-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      if (!form.reportValidity() || !cart.length) return;
+      const paymentMethod = new FormData(form).get("paymentMethod");
+      const total = money(cartSubtotal());
+      $("#success-details").textContent = `Your ${total} order is confirmed with ${paymentMethod}. Thank you for choosing MYOO.`;
+      cart.length = 0;
+      updateCartCount();
+      form.reset();
+      $("#checkout-dialog").close();
+      $(".site-header").hidden = true;
+      $("main").hidden = true;
+      $(".site-footer").hidden = true;
+      $("#payment-success").hidden = false;
+      location.hash = "thank-you";
+    });
+
+    $("#continue-shopping").addEventListener("click", () => {
+      $("#payment-success").hidden = true;
+      $(".site-header").hidden = false;
+      $("main").hidden = false;
+      $(".site-footer").hidden = false;
+      location.hash = "collection";
+    });
+
+    const heroVisual = document.querySelector(".hero-visual");
+    const heroPortrait = $("#hero-image");
+    heroVisual.addEventListener("pointermove", event => {
+      if (reduceMotion.matches) return;
+      const box = heroVisual.getBoundingClientRect();
+      const x = (event.clientX - box.left) / box.width - .5;
+      const y = (event.clientY - box.top) / box.height - .5;
+      heroPortrait.style.transform = `scale(1.05) translate(${x * 14}px, ${y * 14}px)`;
+    });
+    heroVisual.addEventListener("pointerleave", () => heroPortrait.style.transform = "");
+    window.addEventListener("pagehide", () => {
+      studioState.references.forEach(reference => URL.revokeObjectURL(reference.url));
+      arStream?.getTracks().forEach(track => track.stop());
+    });
+
+    // Added last: if anything above fails, the page still renders without motion.
+
+    /* =========================================================
+     * FEATURE: MYOO AI FASHION DESIGNER
+     * ========================================================= */
+    const designerState = {
+      file: null,
+      originalUrl: "",
+      generatedUrl: "",
+      activeView: "original",
+      analysis: null,
+      analysing: false,
+      generating: false
+    };
+
+    const designerFileInput = $("#designer-file-input");
+    const designerDropzone = $("#designer-dropzone");
+    const designerSelectedFile = $("#designer-selected-file");
+    const designerFileName = $("#designer-file-name");
+    const designerFileSize = $("#designer-file-size");
+    const designerFileRemove = $("#designer-file-remove");
+    const analyseOutfitBtn = $("#analyse-outfit-btn");
+    const designerAnalysisStatus = $("#designer-analysis-status");
+    const designerErrorBanner = $("#designer-error-banner");
+    const designerErrorTitle = $("#designer-error-title");
+    const designerErrorMessage = $("#designer-error-message");
+    const designerErrorHint = $("#designer-error-hint");
+    const designerAnalysisResults = $("#designer-analysis-results");
+    const designerGenerationStep = $("#designer-generation-step");
+    const designerInstructionInput = $("#designer-instruction-input");
+    const generateDesignBtn = $("#generate-design-btn");
+    const designerPreview = $("#designer-preview");
+    const designerPreviewImage = $("#designer-preview-image");
+    const designerStamp = $("#designer-stamp");
+    const designerPreviewEyebrow = $("#designer-preview-eyebrow");
+    const designerPreviewName = $("#designer-preview-name");
+    const designerPreviewDesc = $("#designer-preview-desc");
+    const designerViewToggle = $("#designer-view-toggle");
+    const toggleViewOriginal = $("#toggle-view-original");
+    const toggleViewGenerated = $("#toggle-view-generated");
+
+    function formatFileSize(bytes) {
+      if (bytes < 1024) return bytes + " B";
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
+      return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+    }
+
+    function hideDesignerError() {
+      designerErrorBanner.hidden = true;
+    }
+
+    function showDesignerError(title, message, hint) {
+      designerErrorTitle.textContent = title;
+      designerErrorMessage.textContent = message;
+      designerErrorHint.textContent = hint || "";
+      designerErrorBanner.hidden = false;
+    }
+
+    function handleSelectedOutfit(file) {
+      if (!file) return;
+      if (!/image\/(jpeg|png|webp)/i.test(file.type)) {
+        showDesignerError("Invalid Image Format", "Please select a JPG, PNG, or WebP image.");
+        return;
+      }
+      if (file.size > 10 * 1024 * 1024) {
+        showDesignerError("File Too Large", "Outfit reference image must be 10 MB or smaller.");
+        return;
+      }
+
+      hideDesignerError();
+      if (designerState.originalUrl && designerState.originalUrl.startsWith("blob:")) {
+        URL.revokeObjectURL(designerState.originalUrl);
+      }
+      designerState.file = file;
+      designerState.originalUrl = URL.createObjectURL(file);
+      designerState.generatedUrl = "";
+      designerState.analysis = null;
+      designerState.activeView = "original";
+
+      designerPreviewImage.src = designerState.originalUrl;
+      designerPreviewImage.alt = "Uploaded outfit: " + file.name;
+      designerPreview.classList.remove("is-generated", "is-loading");
+      designerViewToggle.hidden = true;
+      designerStamp.textContent = "OUTFIT LOADED / READY TO ANALYSE";
+      designerPreviewEyebrow.textContent = "Uploaded Reference";
+      designerPreviewName.textContent = file.name.replace(/\.[^.]+$/, "");
+      designerPreviewDesc.textContent = "Your outfit image is staged. Click 'Analyse My Outfit' below to extract styling, fabric, embroidery, and design details.";
+
+      designerFileName.textContent = file.name;
+      designerFileSize.textContent = formatFileSize(file.size);
+      designerDropzone.hidden = true;
+      designerSelectedFile.hidden = false;
+      analyseOutfitBtn.disabled = false;
+      designerAnalysisResults.hidden = true;
+      designerGenerationStep.hidden = true;
+      designerAnalysisStatus.textContent = "OUTFIT READY / Click 'Analyse My Outfit' to inspect garment cut, fabric, embroidery, and details.";
+    }
+
+    function resetOutfitSelection() {
+      if (designerState.originalUrl && designerState.originalUrl.startsWith("blob:")) {
+        URL.revokeObjectURL(designerState.originalUrl);
+      }
+      designerState.file = null;
+      designerState.originalUrl = "";
+      designerState.generatedUrl = "";
+      designerState.analysis = null;
+      designerState.activeView = "original";
+
+      designerFileInput.value = "";
+      designerDropzone.hidden = false;
+      designerSelectedFile.hidden = true;
+      analyseOutfitBtn.disabled = true;
+      designerAnalysisResults.hidden = true;
+      designerGenerationStep.hidden = true;
+      designerViewToggle.hidden = true;
+      hideDesignerError();
+
+      designerPreviewImage.src = "Zardozi Maroon Lehenga.jpg";
+      designerPreviewImage.alt = "MYOO Fashion preview";
+      designerPreview.classList.remove("is-generated", "is-loading");
+      designerStamp.textContent = "Awaiting your outfit / 001";
+      designerPreviewEyebrow.textContent = "Atelier Concept View";
+      designerPreviewName.textContent = "Upload Outfit Image";
+      designerPreviewDesc.textContent = "Upload a reference photo to begin AI analysis. Once analyzed, you can request custom couture modifications and preview your redesigned garment.";
+      designerAnalysisStatus.textContent = "AI DESIGNER READY / Upload an outfit reference image to begin.";
+    }
+
+    designerDropzone.addEventListener("click", () => designerFileInput.click());
+    designerFileInput.addEventListener("change", event => {
+      if (event.target.files && event.target.files[0]) {
+        handleSelectedOutfit(event.target.files[0]);
+      }
+    });
+
+    ["dragenter", "dragover"].forEach(type => {
+      designerDropzone.addEventListener(type, event => {
+        event.preventDefault();
+        designerDropzone.classList.add("dragging");
+      });
+    });
+
+    ["dragleave", "drop"].forEach(type => {
+      designerDropzone.addEventListener(type, event => {
+        event.preventDefault();
+        designerDropzone.classList.remove("dragging");
+        if (type === "drop" && event.dataTransfer.files && event.dataTransfer.files[0]) {
+          handleSelectedOutfit(event.dataTransfer.files[0]);
+        }
+      });
+    });
+
+    designerFileRemove.addEventListener("click", resetOutfitSelection);
+
+    async function analyseSelectedOutfit() {
+      if (!designerState.file || designerState.analysing) return;
+      designerState.analysing = true;
+      hideDesignerError();
+      analyseOutfitBtn.disabled = true;
+      analyseOutfitBtn.querySelector(".btn-text").textContent = "Analysing Outfit...";
+      designerPreview.classList.add("is-loading");
+      designerStamp.textContent = "AI VISION ANALYSING...";
+      designerAnalysisStatus.textContent = "SENDING OUTFIT TO AI ATELIER ENGINE...\nScanning garment silhouette, detecting palette, fabrics, embroidery, neckline, and sleeves.";
+
+      const formData = new FormData();
+      formData.append("outfitImage", designerState.file, designerState.file.name);
+
+      try {
+        const response = await fetch("/api/analyse-outfit", {
+          method: "POST",
+          body: formData
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(result.error || ("Analysis failed (" + response.status + ")."));
+        }
+
+        const data = result.analysis;
+        designerState.analysis = data;
+
+        $("#spec-outfit-type").textContent = data.outfitType || "Custom Garment";
+        $("#spec-fabric").textContent = data.likelyFabric || "Natural Fabric";
+        $("#spec-neckline").textContent = data.neckline || "Classic Cut";
+        $("#spec-sleeves").textContent = data.sleeves || "Standard";
+
+        const colorsContainer = $("#spec-colors");
+        colorsContainer.replaceChildren();
+        const colors = Array.isArray(data.visibleColors) ? data.visibleColors : [data.visibleColors];
+        colors.filter(Boolean).forEach(color => {
+          const tag = document.createElement("span");
+          tag.className = "spec-tag";
+          tag.textContent = color;
+          colorsContainer.append(tag);
+        });
+
+        $("#spec-embroidery").textContent = data.embroidery || "None visible";
+        $("#spec-patterns").textContent = data.patterns || "Solid / Textured";
+        $("#spec-other").textContent = data.otherDetails || "Tailored finish";
+        $("#designer-enhancement-text").textContent = data.enhancementExplanation || "This outfit provides an exceptional foundation for custom couture enhancement.";
+
+        const recChipsContainer = $("#designer-rec-chips");
+        recChipsContainer.replaceChildren();
+        const recommendations = Array.isArray(data.recommendations) ? data.recommendations : [];
+        recommendations.forEach(rec => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "prompt-chip";
+          btn.textContent = rec;
+          btn.title = "Click to apply this modification";
+          btn.addEventListener("click", () => {
+            designerInstructionInput.value = rec;
+            designerInstructionInput.focus();
+            designerInstructionInput.scrollIntoView({ behavior: "smooth", block: "center" });
+          });
+          recChipsContainer.append(btn);
+        });
+
+        designerAnalysisResults.hidden = false;
+        designerGenerationStep.hidden = false;
+
+        designerPreviewEyebrow.textContent = "Analysed Garment";
+        designerPreviewName.textContent = data.outfitType || designerState.file.name;
+        designerPreviewDesc.textContent = data.enhancementExplanation || "Analysis complete.";
+        designerStamp.textContent = "ANALYSIS COMPLETE / READY TO REDESIGN";
+        designerAnalysisStatus.textContent = "ANALYSIS COMPLETE / " + (result.provider ? "Provider: " + result.provider : "AI Atelier") + ".\nSelect a recommended modification above or write your own custom prompt below.";
+
+        designerInstructionInput.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      } catch (error) {
+        designerStamp.textContent = "ANALYSIS UNAVAILABLE";
+        designerAnalysisStatus.textContent = "ANALYSIS FAILED / " + error.message;
+        showDesignerError(
+          "Outfit Analysis Failed",
+          error.message,
+          error.message.includes("quota") || error.message.includes("credits") || error.message.includes("configured")
+            ? "Configure a valid OPENAI_API_KEY with active credits or a GEMINI_API_KEY in .env."
+            : "Check your internet connection and verify the server log."
+        );
+      } finally {
+        designerState.analysing = false;
+        analyseOutfitBtn.disabled = false;
+        analyseOutfitBtn.querySelector(".btn-text").textContent = "Analyse My Outfit";
+        designerPreview.classList.remove("is-loading");
+      }
+    }
+
+    analyseOutfitBtn.addEventListener("click", analyseSelectedOutfit);
+
+    async function generateMyDesign() {
+      if (!designerState.file || designerState.generating) return;
+      const instruction = designerInstructionInput.value.trim();
+      if (!instruction) {
+        showDesignerError("Instruction Required", "Please enter a modification instruction or click one of the suggested recommendations above.");
+        designerInstructionInput.focus();
+        return;
+      }
+
+      designerState.generating = true;
+      hideDesignerError();
+      generateDesignBtn.disabled = true;
+      generateDesignBtn.querySelector(".btn-text").textContent = "Generating My Design...";
+      designerPreview.classList.add("is-loading");
+      designerStamp.textContent = "AI GENERATING REVISED DESIGN...";
+      designerAnalysisStatus.textContent = "SENDING DESIGN INSTRUCTION TO AI IMAGE GENERATOR...\nInstruction: \"" + instruction + "\"\nPreserving garment silhouette and applying your custom couture modifications.";
+
+      const formData = new FormData();
+      formData.append("outfitImage", designerState.file, designerState.file.name);
+      formData.append("instruction", instruction);
+      if (designerState.analysis) {
+        formData.append("outfitContext", designerState.analysis.outfitType + ", " + designerState.analysis.likelyFabric);
+      }
+
+      try {
+        const response = await fetch("/api/generate-design", {
+          method: "POST",
+          body: formData
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(result.error || ("Design generation failed (" + response.status + ")."));
+        }
+        if (!result.image) {
+          throw new Error("The image provider did not return an image.");
+        }
+
+        designerState.generatedUrl = result.image;
+        designerState.activeView = "generated";
+        designerPreviewImage.src = result.image;
+        designerPreviewImage.alt = "AI redesigned outfit: " + instruction;
+        designerPreview.classList.add("is-generated");
+        designerViewToggle.hidden = false;
+        toggleViewGenerated.classList.add("is-active");
+        toggleViewOriginal.classList.remove("is-active");
+
+        designerStamp.textContent = "REVISED DESIGN / AI GENERATED";
+        designerPreviewEyebrow.textContent = "Bespoke Redesign";
+        designerPreviewName.textContent = "Redesigned " + (designerState.analysis?.outfitType || "Outfit");
+        designerPreviewDesc.textContent = "Custom modification: \"" + instruction + "\". Created with " + (result.model || "AI Model") + ".";
+        designerAnalysisStatus.textContent = "COMPLETE / REVISED OUTFIT PREVIEW GENERATED WITH " + (result.model || "AI IMAGE ENGINE") + ".\nUse the 'Original' and 'Redesigned' buttons on the preview to compare results.";
+
+        designerPreview.scrollIntoView({ behavior: "smooth", block: "start" });
+      } catch (error) {
+        designerStamp.textContent = "GENERATION UNAVAILABLE";
+        designerAnalysisStatus.textContent = "GENERATION FAILED / " + error.message;
+        showDesignerError(
+          "Design Generation Failed",
+          error.message,
+          error.message.includes("quota") || error.message.includes("credits") || error.message.includes("configured")
+            ? "Configure a valid OPENAI_API_KEY with active credits or a GEMINI_API_KEY in .env."
+            : "Check that the image service is available and try again."
+        );
+      } finally {
+        designerState.generating = false;
+        generateDesignBtn.disabled = false;
+        generateDesignBtn.querySelector(".btn-text").textContent = "Generate My Design";
+        designerPreview.classList.remove("is-loading");
+      }
+    }
+
+    generateDesignBtn.addEventListener("click", generateMyDesign);
+
+    toggleViewOriginal.addEventListener("click", () => {
+      if (!designerState.originalUrl) return;
+      designerState.activeView = "original";
+      designerPreviewImage.src = designerState.originalUrl;
+      designerStamp.textContent = "ORIGINAL REFERENCE OUTFIT";
+      toggleViewOriginal.classList.add("is-active");
+      toggleViewGenerated.classList.remove("is-active");
+    });
+
+    toggleViewGenerated.addEventListener("click", () => {
+      if (!designerState.generatedUrl) return;
+      designerState.activeView = "generated";
+      designerPreviewImage.src = designerState.generatedUrl;
+      designerStamp.textContent = "REVISED DESIGN / AI GENERATED";
+      toggleViewGenerated.classList.add("is-active");
+      toggleViewOriginal.classList.remove("is-active");
+    });
+
+
+    document.documentElement.classList.add("motion");
+  </script>
+</body>
+
+</html>
