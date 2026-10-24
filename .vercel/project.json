@@ -1,0 +1,16 @@
+{
+  "projectId": "prj_AWsOZ6llAADKmtXBp8FniNdn8MLW",
+  "orgId": "team_u2x4JAQZVRMhYs06WneXsldr",
+  "projectName": "myoo-fashion-ai",
+  "settings": {
+    "createdAt": 1792837149802,
+    "framework": "node",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "24.x"
+  }
+}

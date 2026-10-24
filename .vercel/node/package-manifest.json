@@ -1,0 +1,10 @@
+{
+  "version": "20260304",
+  "runtime": "node",
+  "runtimeVersion": {
+    "resolved": "24",
+    "requested": ">=20",
+    "requestedSource": "package.json"
+  },
+  "dependencies": []
+}

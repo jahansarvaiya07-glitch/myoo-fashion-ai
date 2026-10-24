@@ -1,0 +1,19 @@
+{
+  "handler": "server.mjs",
+  "runtime": "nodejs24.x",
+  "architecture": "x86_64",
+  "environment": {},
+  "framework": {
+    "slug": "",
+    "version": ""
+  },
+  "shouldDisableAutomaticFetchInstrumentation": false,
+  "launcherType": "Nodejs",
+  "shouldAddHelpers": false,
+  "shouldAddSourcemapSupport": true,
+  "awsLambdaHandler": "",
+  "filePathMap": {
+    ".env": ".env",
+    "index.html": "index.html"
+  }
+}

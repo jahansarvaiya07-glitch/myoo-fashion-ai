@@ -6,7 +6,7 @@ async function test() {
   console.log("Health:", health);
 
   console.log("\n--- 2. Scan Cloth ---");
-  const img = await readFile("Zardozi Maroon Lehenga.jpg");
+  const img = await readFile("d:/0001vscode-outputs/myoo folder/Zardozi Maroon Lehenga.jpg");
   const form = new FormData();
   form.append("clothImage", new Blob([img], { type: "image/jpeg" }), "Zardozi Maroon Lehenga.jpg");
 
