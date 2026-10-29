@@ -3,7 +3,7 @@
   "target": "production",
   "argv": [
     "C:\\Program Files\\nodejs\\node.exe",
-    "C:\\Users\\Omkar\\AppData\\Local\\npm-cache\\_npx\\69f9afb961c37556\\node_modules\\vercel\\dist\\vc.js",
+    "C:\\Users\\Jahan\\AppData\\Local\\npm-cache\\_npx\\69f9afb961c37556\\node_modules\\vercel\\dist\\vc.js",
     "build",
     "--prod"
   ],
@@ -25,7 +25,7 @@
     },
     {
       "require": "@vercel/backends",
-      "requirePath": "C:\\Users\\Omkar\\AppData\\Local\\npm-cache\\_npx\\69f9afb961c37556\\node_modules\\@vercel\\backends\\dist\\index.mjs",
+      "requirePath": "C:\\Users\\Jahan\\AppData\\Local\\npm-cache\\_npx\\69f9afb961c37556\\node_modules\\@vercel\\backends\\dist\\index.mjs",
       "apiVersion": 2,
       "src": "package.json",
       "use": "@vercel/backends",
